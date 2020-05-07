@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ExpressoBits.Console
+namespace ExpressoBits.Console.UI
 {
     public class LogPanel : MonoBehaviour
     {

@@ -12,7 +12,7 @@ namespace ExpressoBits.Console.Commands
             if (logText.Length <= 0) return false;
 
             Debug.LogWarning(logText);
-            if (Commander.Instance.GetComponent<Logger>() != null) Logger.Instance.LogWarning(logText);
+            if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogWarning(logText);
 
             return true;
         }

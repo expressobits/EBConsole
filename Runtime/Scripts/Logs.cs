@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ExpressoBits.Console.Logs;
+using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {
     [RequireComponent(typeof(Commander))]
-    public class Logger : Singleton<Logger>
+    public class Logs : Singleton<Logs>
     {
         [Header("Prefabs")]
         public LogPanel messagePanel;

@@ -71,18 +71,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6445859978175601733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9602dbaabe9f9d4792c43182c4e39c4, type: 3}
+  m_Script: {fileID: 11500000, guid: f607bfccc7a82d04390ca1ad039fc3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
   uiLogPrefab: {fileID: 573168610, guid: b76fd55d7c9051d4698ed7b21ee73940, type: 3}
   defaultTimer: 8
   defaultLogSprite: {fileID: 21300000, guid: 23efc584638783b43b82e3af26c47d38, type: 3}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 0, g: 0, b: 0, a: 1}
   warnLogSprite: {fileID: 21300000, guid: fb3335b36af314a46bbb493fc965d71a, type: 3}
   warnColor: {r: 1, g: 0.7921569, b: 0.15686275, a: 1}
   errorLogSprite: {fileID: 21300000, guid: 5da0cee05ea18c54db84bf4c33fc87a1, type: 3}
-  errorColor: {r: 0.8666667, g: 0.09803922, b: 0.11372549, a: 1}
+  errorColor: {r: 0.6901961, g: 0.07058824, b: 0.039215688, a: 1}
 --- !u!114 &4474387821887415922
 MonoBehaviour:
   m_ObjectHideFlags: 0

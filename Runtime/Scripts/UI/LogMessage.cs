@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ExpressoBits.Console.Logs
+namespace ExpressoBits.Console.UI
 {
     public class LogMessage : MonoBehaviour
     {
@@ -25,9 +25,9 @@ namespace ExpressoBits.Console.Logs
             this.logText = logText;
             text.font = font;
             image.sprite = sprite;
-            image.color = color;
             color.a = background.color.a;
             background.color = color;
+
         }
 
         private void Awake()
@@ -39,7 +39,6 @@ namespace ExpressoBits.Console.Logs
         {
             text.text = logText;
         }
-
 
 
     }
