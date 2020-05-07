@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ExpressoBits.Console.Logs;
+using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {

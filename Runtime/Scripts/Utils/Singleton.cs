@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ExpressoBits.Console
+namespace ExpressoBits.Console.Utils
 {
     /// <summary>
     /// Inherit from this base class to create a singleton.
