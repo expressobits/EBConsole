@@ -1,0 +1,11 @@
+{
+    "name": "br.com.expressobits.console",
+    "displayName": "EB Console",
+    "version": "0.1.0",
+    "unity": "2019.3",
+    "description": "Console",
+    "keywords": [
+        "utility"
+    ],
+    "category": "Unity"
+}
