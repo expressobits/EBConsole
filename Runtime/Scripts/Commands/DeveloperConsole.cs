@@ -21,17 +21,17 @@ namespace ExpressoBits.Console
             this.commandWithoutPrefix = commandWithoutPrefix;
         }
 
-        public void ProcessCommand(string inputValue)
+        public bool ProcessCommand(string inputValue)
         {
             if (!inputValue.StartsWith(prefix))
             {
                 if (commandWithoutPrefix == null)
                 {
-                    return;
+                    return false;
                 }
                 else
                 {
-                    ProcessCommand(commandWithoutPrefix.CommandWord, inputValue.Split(' '));
+                    return ProcessCommand(commandWithoutPrefix.CommandWord, inputValue.Split(' '));
                 }
 
             }
@@ -41,7 +41,7 @@ namespace ExpressoBits.Console
                 string[] inputSplit = inputValue.Split(' ');
                 string commandInput = inputSplit[0];
                 string[] args = inputSplit.Skip(1).ToArray();
-                ProcessCommand(commandInput, args);
+                return ProcessCommand(commandInput, args);
             }
 
 
@@ -49,7 +49,7 @@ namespace ExpressoBits.Console
         }
 
 
-        public void ProcessCommand(string commandInput, string[] args)
+        public bool ProcessCommand(string commandInput, string[] args)
         {
             foreach (var command in commands)
             {
@@ -59,9 +59,11 @@ namespace ExpressoBits.Console
                 }
                 if (command.Process(args))
                 {
-                    return;
+                    return true;
                 }
             }
+
+            return false;
         }
     }
 

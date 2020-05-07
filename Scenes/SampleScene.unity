@@ -248,8 +248,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.20652369, g: 0.28421482, b: 0.4811321, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -296,13 +296,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1059695398
+--- !u!1 &1803399850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803399853}
+  - component: {fileID: 1803399852}
+  - component: {fileID: 1803399851}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1803399851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803399850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1803399852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803399850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1803399853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803399850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8580264782490645935
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: defaultTimer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601733, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_Name
@@ -310,14 +381,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
-      propertyPath: commands.Array.size
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: font
+      value: 
+      objectReference: {fileID: 12800000, guid: 722ec16bd5447ce4b97b7cc495f46fb3,
+        type: 3}
     - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
-      propertyPath: commands.Array.data[0]
+      propertyPath: commandError
       value: 
-      objectReference: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
+      objectReference: {fileID: 11400000, guid: 32f276c4388c929438f4d7da07bb0167,
         type: 2}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
@@ -357,7 +429,7 @@ PrefabInstance:
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}

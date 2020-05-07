@@ -5,21 +5,25 @@ namespace ExpressoBits.Console.Logs
 {
     public class LogMessage : MonoBehaviour
     {
-        private Text text;
+        public Text text;
+        public Image image;
 
         private string logText;
         private float timer = 2f;
 
-        public void Setup(string logText, float timer)
+        public void Setup(string logText, Font font, float timer, Sprite sprite, Color color)
         {
-            this.logText = logText;
+            Setup(logText, font, sprite, color);
             this.timer = timer;
             Destroy(gameObject, timer);
         }
 
-        public void Setup(string logText)
+        public void Setup(string logText, Font font, Sprite sprite, Color color)
         {
             this.logText = logText;
+            text.font = font;
+            image.sprite = sprite;
+            image.color = color;
         }
 
         private void Awake()

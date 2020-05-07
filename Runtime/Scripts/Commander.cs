@@ -9,28 +9,33 @@ namespace ExpressoBits.Console
 {
     public class Commander : Singleton<Commander>
     {
+
+        [Header("General Settings")]
         [SerializeField]
         private string prefix = string.Empty;
 
+        [Header("List of valid commands")]
         [SerializeField]
         private ConsoleCommand[] commands = new ConsoleCommand[0];
 
         [SerializeField]
+        /** Command process when process string without prefix */
         private ConsoleCommand commandWithoutPrefix = null;
 
+
         [Header("UI")]
+        public InputField consoleInputPrefab;
 
-        [SerializeField]
-        private GameObject UICanvas = null;
+        public Font font;
 
-        [SerializeField]
-        private GameObject ToastMessages = null;
-
-        [SerializeField]
-        private InputField inputField = null;
-
+        [Header("Events")]
         public UnityEvent OnCloseCommander;
         public UnityEvent OnOpenCommander;
+
+        #region private values
+        private Canvas UICanvas = null;
+
+        private InputField consoleInput;
 
         ///
         private static Commander instance;
@@ -45,6 +50,8 @@ namespace ExpressoBits.Console
             }
         }
 
+        #endregion
+
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -56,50 +63,59 @@ namespace ExpressoBits.Console
             instance = this;
 
             DontDestroyOnLoad(gameObject);
+
+            UICanvas = GetComponentInChildren<Canvas>();
+
+            consoleInput = Instantiate<InputField>(consoleInputPrefab, UICanvas.gameObject.transform);
+            consoleInput.onValueChanged.AddListener(delegate { Send(); });
+
+            consoleInput.GetComponentInChildren<Text>().font = font;
+
+            consoleInput.gameObject.SetActive(false);
+
+
         }
 
-        public void Toggle()
+
+        #region Open/Close
+        public void CloseCommander()
         {
-            if (UICanvas.activeSelf)
+            consoleInput.gameObject.SetActive(false);
+            OnCloseCommander.Invoke();
+        }
+
+        public void OpenCommander()
+        {
+            consoleInput.gameObject.SetActive(true);
+            OnOpenCommander.Invoke();
+        }
+        #endregion
+
+        public void ProcessCommand(string inputValue)
+        {
+            bool success = DeveloperConsole.ProcessCommand(inputValue);
+
+            consoleInput.text = string.Empty;
+        }
+
+        public void Send()
+        {
+            if (consoleInput.text.Contains("\n"))
+            {
+                consoleInput.text = consoleInput.text.Remove(consoleInput.text.LastIndexOf("\n"));
+                ProcessCommand(consoleInput.text);
+            }
+        }
+
+        public void Toogle()
+        {
+            if (consoleInput.gameObject.activeSelf)
             {
                 CloseCommander();
             }
             else
             {
                 OpenCommander();
-            }
-        }
-
-        public void CloseCommander()
-        {
-            UICanvas.SetActive(false);
-            ToastMessages.SetActive(true);
-            OnCloseCommander.Invoke();
-        }
-
-        public void OpenCommander()
-        {
-
-            UICanvas.SetActive(true);
-            ToastMessages.SetActive(false);
-            //inputField.ActivateInputField();
-            OnOpenCommander.Invoke();
-        }
-
-        public void ProcessCommand(string inputValue)
-        {
-            DeveloperConsole.ProcessCommand(inputValue);
-
-            inputField.text = string.Empty;
-        }
-
-
-        public void Send()
-        {
-            if (inputField.text.Contains("\n"))
-            {
-                inputField.text = inputField.text.Remove(inputField.text.LastIndexOf("\n"));
-                ProcessCommand(inputField.text);
             }
         }
     }
