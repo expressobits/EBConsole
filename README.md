@@ -21,11 +21,11 @@ and you're done!
 Add prefab Console to scene!
 
 And FUN!
-(https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
+![Demo](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
 
 Add you custom commands in commander component. And call Logs.Instance.Log to display message logs.
-Log types
-(https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
+Log types!
+![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
 
 ## Authors
 
