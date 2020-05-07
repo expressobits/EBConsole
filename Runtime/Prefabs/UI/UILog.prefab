@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 757982823}
   image: {fileID: 5614667450057269899}
+  background: {fileID: 1867475120}
 --- !u!114 &1867475120
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ namespace ExpressoBits.Console.Logs
         public Text text;
         public Image image;
 
+        public Image background;
+
         private string logText;
         private float timer = 2f;
 
@@ -24,6 +26,8 @@ namespace ExpressoBits.Console.Logs
             text.font = font;
             image.sprite = sprite;
             image.color = color;
+            color.a = background.color.a;
+            background.color = color;
         }
 
         private void Awake()
