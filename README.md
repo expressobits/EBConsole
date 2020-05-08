@@ -62,7 +62,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2019 [Rafael Correa](https://github.com/scriptsengineer).
+Copyright © 2020 [Rafael Correa](https://github.com/scriptsengineer).
 
 This project is [MIT](MIT) licensed.
 
