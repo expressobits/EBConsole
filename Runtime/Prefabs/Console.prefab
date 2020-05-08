@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4474387821887415923}
   - component: {fileID: 4474387821887415922}
   m_Layer: 0
-  m_Name: Developer Console
+  m_Name: Console
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,6 @@ MonoBehaviour:
     type: 2}
   consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
     type: 3}
-  characterIgnore: '   '
   font: {fileID: 12800000, guid: 722ec16bd5447ce4b97b7cc495f46fb3, type: 3}
   OnCloseCommander:
     m_PersistentCalls:

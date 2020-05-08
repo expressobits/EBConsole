@@ -6,28 +6,35 @@
 
 ![Demo](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
 
-> Expresso Bits Console!
-
-### 🏠 [Homepage](www.expressobits.com.br/ebconsole)
-
 ## Install
 
-To install, you must open in the folders of your ***Packages/manifest.json*** files add the package 
-> "br.com.expressobits.console": "https://github.com/ExpressoBits/EBConsole.git"
-Or use "Add package from git URL" in package manager.
 
+To install open <b>Window</b> > <b>Package Manager</b> and click on the + package icon and choose <b>"Add package from git url"</b> and type:
+> https://github.com/ExpressoBits/EBConsole.git
 and you're done!
+
+
 
 ## Usage
 
-Add prefab Console to scene!
+Add prefab Console to scene! 
+For it to work correctly, an EventSystem is needed in your scene.
 
-And FUN!
+### Toggle Commander
+By default the component added to the prefab called <i>ToggleCommander</i> opens the console with <i>Enter</i> and closes the console with <i>Esc</i>. You can modify these keys for your convenience, and you can also remove this component if you want another component / object to handle the commander.
 
+### Commands
+You can create custom commands by extending the <i>ConsoleCommand</i> class. 
+Then just add the command's scriptable object to the <i>Commander</i> component.
 
-Add you custom commands in commander component. And call Logs.Instance.Log to display message logs.
-Log types!
+### Commandos de log
 ![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
+It still has basic log commands that add messages to a panel below the console. These can be called up with:
+```Logs.Instance.Log("Log Default");```
+```Logs.Instance.LogWarning("Warning log");```
+```Logs.Instance.LogError("Error log");```
+
+
 
 ## Authors
 
