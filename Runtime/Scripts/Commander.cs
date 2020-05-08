@@ -38,9 +38,6 @@ namespace ExpressoBits.Console
 
         private InputField consoleInput;
 
-        ///
-        private static Commander instance;
-
         private DeveloperConsole developerConsole;
         private DeveloperConsole DeveloperConsole
         {
@@ -55,15 +52,6 @@ namespace ExpressoBits.Console
 
         private void Awake()
         {
-            if (instance != null && instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            instance = this;
-
-            DontDestroyOnLoad(gameObject);
 
             UICanvas = GetComponentInChildren<Canvas>();
 
@@ -82,14 +70,17 @@ namespace ExpressoBits.Console
         public void CloseCommander()
         {
             consoleInput.gameObject.SetActive(false);
+            //consoleInput.DeactivateInputField();
             OnCloseCommander.Invoke();
         }
 
         public void OpenCommander()
         {
             consoleInput.gameObject.SetActive(true);
+            consoleInput.ActivateInputField();
             OnOpenCommander.Invoke();
         }
+
         #endregion
 
         public void ProcessCommand(string inputValue)
@@ -101,11 +92,15 @@ namespace ExpressoBits.Console
 
         public void Send()
         {
+
             if (consoleInput.text.Contains("\n"))
             {
                 consoleInput.text = consoleInput.text.Remove(consoleInput.text.LastIndexOf("\n"));
                 ProcessCommand(consoleInput.text);
             }
+
+
+
         }
 
         public void Toggle()

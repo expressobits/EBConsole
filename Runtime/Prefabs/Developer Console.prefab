@@ -55,6 +55,7 @@ MonoBehaviour:
     type: 2}
   consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
     type: 3}
+  characterIgnore: '   '
   font: {fileID: 12800000, guid: 722ec16bd5447ce4b97b7cc495f46fb3, type: 3}
   OnCloseCommander:
     m_PersistentCalls:
@@ -95,7 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86a3c518930e6c449400f50b3204008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openKey: 9
+  openKey: 13
+  closeKey: 27
 --- !u!1 &6445859979588379789
 GameObject:
   m_ObjectHideFlags: 0

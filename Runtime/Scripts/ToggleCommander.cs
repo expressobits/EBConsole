@@ -8,7 +8,8 @@ namespace ExpressoBits.Console
     public class ToggleCommander : MonoBehaviour
     {
 
-        public KeyCode openKey;
+        public KeyCode openKey = KeyCode.Return;
+        public KeyCode closeKey = KeyCode.Escape;
 
         private Commander commander;
 
@@ -21,7 +22,12 @@ namespace ExpressoBits.Console
         {
             if (Input.GetKeyDown(openKey))
             {
-                commander.Toggle();
+                commander.OpenCommander();
+            }
+
+            if (Input.GetKeyDown(closeKey))
+            {
+                commander.CloseCommander();
             }
         }
 
