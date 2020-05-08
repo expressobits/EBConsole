@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using ExpressoBits.Console.Commands;
 using UnityEngine.UI;
 using UnityEngine.Events;

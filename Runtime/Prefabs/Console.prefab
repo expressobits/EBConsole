@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6445859978175601738}
   - component: {fileID: 4474387821887415923}
   - component: {fileID: 4474387821887415922}
+  - component: {fileID: 1917564330}
   m_Layer: 0
   m_Name: Console
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6, type: 2}
   - {fileID: 11400000, guid: 32f276c4388c929438f4d7da07bb0167, type: 2}
   - {fileID: 11400000, guid: 2d338ad73e07c1241944083afa175b3c, type: 2}
+  - {fileID: 11400000, guid: 08b74e1ffbf42fe449d7a40580bc0df2, type: 2}
   commandWithoutPrefix: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
     type: 2}
   consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
@@ -83,6 +85,10 @@ MonoBehaviour:
   warnColor: {r: 1, g: 0.7921569, b: 0.15686275, a: 1}
   errorLogSprite: {fileID: 21300000, guid: 5da0cee05ea18c54db84bf4c33fc87a1, type: 3}
   errorColor: {r: 0.6901961, g: 0.07058824, b: 0.039215688, a: 1}
+  helpLogSprite: {fileID: 21300000, guid: 2968f5c9fbf484a48886138fc58e9c5c, type: 3}
+  helpColor: {r: 0.23137255, g: 0.3137255, b: 0.80784315, a: 1}
+  successLogSprite: {fileID: 21300000, guid: b2c2cf9f2b0907d49a56b232cab2ba4d, type: 3}
+  successColor: {r: 0.039215688, g: 0.56078434, b: 0.03137255, a: 1}
 --- !u!114 &4474387821887415922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +103,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openKey: 13
   closeKey: 27
+--- !u!114 &1917564330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445859978175601733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3895d50ef03fc44aa118a1c8e6a2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helpTextToOpen: Type <b><color=lightgreen>ENTER</color></b> to open the console
+  helpTextToClose: Type <b><color=lightgreen>ESC</color></b> to open the console
 --- !u!1 &6445859979588379789
 GameObject:
   m_ObjectHideFlags: 0

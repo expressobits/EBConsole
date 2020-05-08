@@ -133,6 +133,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Console
       objectReference: {fileID: 0}
+    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: commands.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: commands.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a37067cb3ce005443bf735c6f7a19294,
+        type: 2}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -383,7 +394,7 @@ Camera:
   m_GameObject: {fileID: 2110625692}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

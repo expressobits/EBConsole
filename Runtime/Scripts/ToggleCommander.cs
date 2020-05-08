@@ -31,8 +31,6 @@ namespace ExpressoBits.Console
             }
         }
 
-
-
     }
 
 }

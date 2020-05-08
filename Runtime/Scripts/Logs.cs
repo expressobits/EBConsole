@@ -25,6 +25,10 @@ namespace ExpressoBits.Console
         public Color warnColor;
         public Sprite errorLogSprite;
         public Color errorColor;
+        public Sprite helpLogSprite;
+        public Color helpColor;
+        public Sprite successLogSprite;
+        public Color successColor;
 
         private Commander commander;
         private Canvas UICanvas = null;
@@ -95,6 +99,16 @@ namespace ExpressoBits.Console
             LogError(logText, defaultTimer);
         }
 
+        public void LogHelp(string logText)
+        {
+            LogHelp(logText, defaultTimer);
+        }
+
+        public void LogSuccess(string logText)
+        {
+            LogSuccess(logText, defaultTimer);
+        }
+
         public void Log(string logText, float timer)
         {
             Log(logText, timer, defaultLogSprite, defaultColor);
@@ -108,6 +122,16 @@ namespace ExpressoBits.Console
         public void LogError(string logText, float timer)
         {
             Log(logText, timer, errorLogSprite, errorColor);
+        }
+
+        public void LogHelp(string logText, float timer)
+        {
+            Log(logText, timer, helpLogSprite, helpColor);
+        }
+
+        public void LogSuccess(string logText, float timer)
+        {
+            Log(logText, timer, successLogSprite, successColor);
         }
         #endregion
 
