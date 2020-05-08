@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
+![Demo](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
+
 > Expresso Bits Console!
 
 ### 🏠 [Homepage](www.expressobits.com.br/ebconsole)
@@ -21,11 +23,11 @@ and you're done!
 Add prefab Console to scene!
 
 And FUN!
-(https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
+
 
 Add you custom commands in commander component. And call Logs.Instance.Log to display message logs.
-Log types
-(https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
+Log types!
+![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
 
 ## Authors
 
