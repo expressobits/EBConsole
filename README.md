@@ -30,7 +30,9 @@ Then just add the command's scriptable object to the <i>Commander</i> component.
 
 ### Commandos de log
 ![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
+
 It still has basic log commands that add messages to a panel below the console. These can be called up with:
+
 ```Logs.Instance.Log("Log Default");```
 
 ```Logs.Instance.LogWarning("Warning log");```
