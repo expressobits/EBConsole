@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
-![Demo](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo.gif)
+![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo2.gif)
 
 ## Install
 
@@ -30,7 +30,9 @@ Then just add the command's scriptable object to the <i>Commander</i> component.
 
 ### Commandos de log
 ![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
+
 It still has basic log commands that add messages to a panel below the console. These can be called up with:
+
 ```Logs.Instance.Log("Log Default");```
 
 ```Logs.Instance.LogWarning("Warning log");```
@@ -60,7 +62,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2019 [Rafael Correa](https://github.com/scriptsengineer).
+Copyright © 2020 [Rafael Correa](https://github.com/scriptsengineer).
 
 This project is [MIT](MIT) licensed.
 
