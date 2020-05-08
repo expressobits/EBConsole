@@ -10,13 +10,14 @@
 
 
 To install open <b>Window</b> > <b>Package Manager</b> and click on the + package icon and choose <b>"Add package from git url"</b> and type:
+
 > https://github.com/ExpressoBits/EBConsole.git
+
 and you're done!
 
 
 
 ## Usage
-
 Add prefab Console to scene! 
 For it to work correctly, an EventSystem is needed in your scene.
 
@@ -31,7 +32,9 @@ Then just add the command's scriptable object to the <i>Commander</i> component.
 ![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
 It still has basic log commands that add messages to a panel below the console. These can be called up with:
 ```Logs.Instance.Log("Log Default");```
+
 ```Logs.Instance.LogWarning("Warning log");```
+
 ```Logs.Instance.LogError("Error log");```
 
 
