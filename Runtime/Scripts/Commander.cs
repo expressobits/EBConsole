@@ -108,7 +108,7 @@ namespace ExpressoBits.Console
             }
         }
 
-        public void Toogle()
+        public void Toggle()
         {
             if (consoleInput.gameObject.activeSelf)
             {

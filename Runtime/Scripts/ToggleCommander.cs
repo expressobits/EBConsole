@@ -21,7 +21,7 @@ namespace ExpressoBits.Console
         {
             if (Input.GetKeyDown(openKey))
             {
-                commander.Toogle();
+                commander.Toggle();
             }
         }
 
