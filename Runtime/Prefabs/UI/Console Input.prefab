@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2952335626528802535}
   - component: {fileID: 2952335626528802532}
   - component: {fileID: 2952335626528802533}
+  - component: {fileID: 1473756663083132682}
   m_Layer: 0
   m_Name: Console Input
   m_TagString: Untagged
@@ -216,6 +217,25 @@ MonoBehaviour:
   m_CaretBlinkRate: 2
   m_CaretWidth: 4
   m_ReadOnly: 0
+--- !u!95 &1473756663083132682
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2952335626528802539}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f873d3f555d5f5d4f8cce19ea0cd3717, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8245961943869299931
 GameObject:
   m_ObjectHideFlags: 0

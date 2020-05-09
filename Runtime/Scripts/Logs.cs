@@ -67,6 +67,7 @@ namespace ExpressoBits.Console
                 LogMessage e = messages.Dequeue();
                 Destroy(e.gameObject);
             }
+            OnCloseCommander();
 
         }
 

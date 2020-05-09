@@ -5,6 +5,7 @@ using ExpressoBits.Console.Commands;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using ExpressoBits.Console.Utils;
+using UnityEditor.PackageManager;
 
 namespace ExpressoBits.Console
 {
@@ -29,13 +30,16 @@ namespace ExpressoBits.Console
 
         private void Start()
         {
-            Logs.Instance.LogHelp(helpTextToOpen, 4f);
+            //NOTE get package version?
+            Logs.Instance.Log("Expresso Bits Console <color=red>v0.5.1</color>", 3f);
+
+            Logs.Instance.LogHelp(helpTextToOpen);
 
             open =
             (
                 delegate
                 {
-                    Logs.Instance.LogHelp(helpTextToClose, 4f);
+                    Logs.Instance.LogHelp(helpTextToClose);
                     commander.OnOpenCommander.RemoveListener(this.open);
                 }
             );
