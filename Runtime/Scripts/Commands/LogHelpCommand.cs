@@ -5,6 +5,12 @@ namespace ExpressoBits.Console.Commands
     [CreateAssetMenu(fileName = "Log Help Command", menuName = "Expresso Bits/Console/Log Help Command")]
     public class LogHelpCommand : ConsoleCommand
     {
+
+        private void Awake()
+        {
+            commandWord = "help";
+        }
+
         public override bool Process(string[] args)
         {
             string logText = string.Join(" ", args);

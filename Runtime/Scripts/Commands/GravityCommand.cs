@@ -5,6 +5,11 @@ namespace ExpressoBits.Console.Commands
     [CreateAssetMenu(fileName = "Gravity Command", menuName = "Expresso Bits/Console/Gravity Command")]
     public class GravityCommand : ConsoleCommand
     {
+        private void Awake()
+        {
+            commandWord = "gravity";
+        }
+
         public override bool Process(string[] args)
         {
 
