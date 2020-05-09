@@ -39,6 +39,10 @@ It still has basic log commands that add messages to a panel below the console. 
 
 ```Logs.Instance.LogError("Error log");```
 
+```Logs.Instance.LogHelp("Help log");```
+
+```Logs.Instance.LogSuccess("Success log");```
+
 
 
 ## Authors
