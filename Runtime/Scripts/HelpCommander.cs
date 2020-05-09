@@ -31,7 +31,7 @@ namespace ExpressoBits.Console
         private void Start()
         {
             //NOTE get package version?
-            Logs.Instance.Log("Expresso Bits Console <color=red>v0.5.1</color>", 3f);
+            Logs.Instance.Log("Expresso Bits Console <color=red>v0.6.0</color>", 3f);
 
             Logs.Instance.LogHelp(helpTextToOpen);
 
