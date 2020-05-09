@@ -34,16 +34,33 @@ Then just add the command's scriptable object to the <i>Commander</i> component.
 It still has basic log commands that add messages to a panel below the console. These can be called up with:
 
 ```Logs.Instance.Log("Log Default");```
+or type in console:
+```/log Log Default```
 
 ```Logs.Instance.LogWarning("Warning log");```
+or type in console:
+```/warn Warning log```
 
 ```Logs.Instance.LogError("Error log");```
+or type in console:
+```/error Error log```
 
 ```Logs.Instance.LogHelp("Help log");```
+or type in console:
+```/log Log Default```
 
 ```Logs.Instance.LogSuccess("Success log");```
+or type in console:
+```/success Success log```
+
+Clear the log list with:
+
+```Logs.Instance.Clear();```
+or type in console:
+```\clear```
 
 
+### Commandos 
 
 ## Authors
 
