@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
-![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo2.gif)
+![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo3.gif)
 
 ## Install
 
