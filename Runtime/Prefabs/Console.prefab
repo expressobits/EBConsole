@@ -53,11 +53,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32f276c4388c929438f4d7da07bb0167, type: 2}
   - {fileID: 11400000, guid: 2d338ad73e07c1241944083afa175b3c, type: 2}
   - {fileID: 11400000, guid: 08b74e1ffbf42fe449d7a40580bc0df2, type: 2}
+  - {fileID: 11400000, guid: a37067cb3ce005443bf735c6f7a19294, type: 2}
   commandWithoutPrefix: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
     type: 2}
   consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
     type: 3}
-  font: {fileID: 12800000, guid: 722ec16bd5447ce4b97b7cc495f46fb3, type: 3}
+  font: {fileID: 12800000, guid: cd54ed392bb47b846ba7a5c0ba5a1891, type: 3}
   OnCloseCommander:
     m_PersistentCalls:
       m_Calls: []
@@ -115,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3895d50ef03fc44aa118a1c8e6a2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpTextToOpen: Type <b><color=lightgreen>ENTER</color></b> to open the console
-  helpTextToClose: Type <b><color=lightgreen>ESC</color></b> to open the console
+  helpTextToOpen: Type <color=yellow>ENTER</color> to open the console
+  helpTextToClose: Type <color=yellow>ESC</color> to open the console
 --- !u!1 &6445859979588379789
 GameObject:
   m_ObjectHideFlags: 0
