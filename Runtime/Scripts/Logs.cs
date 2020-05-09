@@ -47,6 +47,7 @@ namespace ExpressoBits.Console
 
             commander.OnOpenCommander.AddListener(delegate { OnOpenCommander(); });
             commander.OnCloseCommander.AddListener(delegate { OnCloseCommander(); });
+            OnCloseCommander();
         }
 
         // TODO default value
@@ -67,7 +68,7 @@ namespace ExpressoBits.Console
                 LogMessage e = messages.Dequeue();
                 Destroy(e.gameObject);
             }
-            OnCloseCommander();
+
 
         }
 
