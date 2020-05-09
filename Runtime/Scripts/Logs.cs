@@ -134,6 +134,15 @@ namespace ExpressoBits.Console
         {
             Log(logText, timer, successLogSprite, successColor);
         }
+
+        public void Clear()
+        {
+            for (int i = messages.Count - 1; i >= 0; i--)
+            {
+                LogMessage e = messages.Dequeue();
+                Destroy(e.gameObject);
+            }
+        }
         #endregion
 
     }
