@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using ExpressoBits.Console.Commands;
-using UnityEngine.UI;
 using UnityEngine.Events;
-using ExpressoBits.Console.Utils;
-using UnityEditor.PackageManager;
 
 namespace ExpressoBits.Console
 {
@@ -18,14 +12,14 @@ namespace ExpressoBits.Console
         [TextArea]
         public string helpTextToClose = "Type <b><color=lightgreen>ESC</color></b> to open the console";
 
-        private Commander commander;
-        private ToggleCommander toggleCommander;
+        private Commander m_Commander;
+        private ToggleCommander m_ToggleCommander;
 
-        private UnityAction open;
+        private UnityAction m_Open;
 
         private void Awake()
         {
-            commander = GetComponent<Commander>();
+            m_Commander = GetComponent<Commander>();
         }
 
         private void Start()
@@ -35,15 +29,15 @@ namespace ExpressoBits.Console
 
             Logs.Instance.LogHelp(helpTextToOpen);
 
-            open =
+            m_Open =
             (
                 delegate
                 {
                     Logs.Instance.LogHelp(helpTextToClose);
-                    commander.OnOpenCommander.RemoveListener(this.open);
+                    m_Commander.onOpenCommander.RemoveListener(this.m_Open);
                 }
             );
-            commander.OnOpenCommander.AddListener(open);
+            m_Commander.onOpenCommander.AddListener(m_Open);
         }
 
 

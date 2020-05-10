@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
+using UnityEngine.Serialization;
 
 namespace ExpressoBits.Console
 {
@@ -17,73 +16,71 @@ namespace ExpressoBits.Console
         public Queue<LogMessage> messages = new Queue<LogMessage>();
 
         public float defaultTimer = 8f;
-
-        [Header("Sprites")]
-        public Sprite defaultLogSprite;
-        public Color defaultColor;
-        public Sprite warnLogSprite;
-        public Color warnColor;
-        public Sprite errorLogSprite;
-        public Color errorColor;
-        public Sprite helpLogSprite;
-        public Color helpColor;
-        public Sprite successLogSprite;
-        public Color successColor;
-
-        private Commander commander;
-        private Canvas UICanvas = null;
-        private LogPanel logPanel;
+        
+        [Header("Log Attributes")]
+        public LogAttribute defaultLogAttribute;
+        public LogAttribute warnLogAttribute;
+        public LogAttribute errorLogAttribute;
+        public LogAttribute helpLogAttribute;
+        public LogAttribute successLogAttribute;
+        
+        private Commander m_Commander;
+        private Canvas m_UiCanvas;
+        private LogPanel m_LogPanel;
 
         private void Awake()
         {
-            commander = GetComponent<Commander>();
-            UICanvas = GetComponentInChildren<Canvas>();
+            m_Commander = GetComponent<Commander>();
+            m_UiCanvas = GetComponentInChildren<Canvas>();
 
-            logPanel = Instantiate<LogPanel>(messagePanel, UICanvas.gameObject.transform);
+            m_LogPanel = Instantiate(messagePanel, m_UiCanvas.gameObject.transform);
         }
 
         private void Start()
         {
 
-            commander.OnOpenCommander.AddListener(delegate { OnOpenCommander(); });
-            commander.OnCloseCommander.AddListener(delegate { OnCloseCommander(); });
+            m_Commander.onOpenCommander.AddListener(OnOpenCommander);
+            m_Commander.onCloseCommander.AddListener(OnCloseCommander);
             OnCloseCommander();
         }
+        
+        
 
         // TODO default value
         public void Log(string logText, float timer, Sprite sprite, Color color)
         {
 
-            LogMessage log = Instantiate<LogMessage>(uiLogPrefab, logPanel.logToast.transform);
+            var log = Instantiate(uiLogPrefab, m_LogPanel.logToast.transform);
             log.transform.SetSiblingIndex(0);
-            log.Setup(logText, commander.font, timer, sprite, color);
+            log.Setup(logText, m_Commander.font, timer, sprite, color);
 
-            LogMessage logA = Instantiate<LogMessage>(uiLogPrefab, logPanel.logScroll.transform);
+            var logA = Instantiate(uiLogPrefab, m_LogPanel.logScroll.transform);
             logA.transform.SetSiblingIndex(0);
-            logA.Setup(logText, commander.font, sprite, color);
+            logA.Setup(logText, m_Commander.font, sprite, color);
 
             messages.Enqueue(logA);
-            if (messages.Count > 32)
-            {
-                LogMessage e = messages.Dequeue();
-                Destroy(e.gameObject);
-            }
-
-
+            if (messages.Count <= 32) return;
+            var e = messages.Dequeue();
+            Destroy(e.gameObject);
+        }
+        
+        public void Log(string logText, float timer, LogAttribute logAttribute)
+        {
+            Log(logText, timer, logAttribute.icon, logAttribute.backgroundColor);
         }
 
         public void OnOpenCommander()
         {
-            logPanel.logPanelScroll.SetActive(true);
-            logPanel.logToast.SetActive(false);
+            m_LogPanel.logPanelScroll.SetActive(true);
+            m_LogPanel.logToast.SetActive(false);
         }
 
         public void OnCloseCommander()
         {
-            logPanel.logPanelScroll.SetActive(false);
-            logPanel.logToast.SetActive(true);
+            m_LogPanel.logPanelScroll.SetActive(false);
+            m_LogPanel.logToast.SetActive(true);
         }
-
+        
 
         #region Utils
         public void Log(string logText)
@@ -91,7 +88,7 @@ namespace ExpressoBits.Console
             Log(logText, defaultTimer);
         }
 
-        public void LogWarning(string logText)
+        public void LogWarn(string logText)
         {
             LogWarn(logText, defaultTimer);
         }
@@ -113,29 +110,32 @@ namespace ExpressoBits.Console
 
         public void Log(string logText, float timer)
         {
-            Log(logText, timer, defaultLogSprite, defaultColor);
+            Log(logText, timer, defaultLogAttribute);
         }
 
         public void LogWarn(string logText, float timer)
         {
-            Log(logText, timer, warnLogSprite, warnColor);
+            Log(logText, timer, warnLogAttribute);
         }
 
         public void LogError(string logText, float timer)
         {
-            Log(logText, timer, errorLogSprite, errorColor);
+            Log(logText, timer,errorLogAttribute );
         }
 
         public void LogHelp(string logText, float timer)
         {
-            Log(logText, timer, helpLogSprite, helpColor);
+            Log(logText, timer,helpLogAttribute);
         }
 
         public void LogSuccess(string logText, float timer)
         {
-            Log(logText, timer, successLogSprite, successColor);
+            Log(logText, timer, successLogAttribute);
         }
 
+        /**
+         * Clear the history logs
+         */
         public void Clear()
         {
             for (int i = messages.Count - 1; i >= 0; i--)

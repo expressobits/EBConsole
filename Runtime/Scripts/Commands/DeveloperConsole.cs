@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using ExpressoBits.Console.Commands;
 using System.Linq;
 using System;
@@ -9,35 +7,35 @@ namespace ExpressoBits.Console
 {
     public class DeveloperConsole
     {
-        private readonly string prefix;
-        private readonly IEnumerable<IConsoleCommand> commands;
+        private readonly string m_Prefix;
+        private readonly IEnumerable<IConsoleCommand> m_Commands;
 
-        private readonly IConsoleCommand commandWithoutPrefix;
+        private readonly IConsoleCommand m_CommandWithoutPrefix;
 
         public DeveloperConsole(string prefix, IEnumerable<IConsoleCommand> commands, IConsoleCommand commandWithoutPrefix)
         {
-            this.prefix = prefix;
-            this.commands = commands;
-            this.commandWithoutPrefix = commandWithoutPrefix;
+            this.m_Prefix = prefix;
+            this.m_Commands = commands;
+            this.m_CommandWithoutPrefix = commandWithoutPrefix;
         }
 
         public bool ProcessCommand(string inputValue)
         {
-            if (!inputValue.StartsWith(prefix))
+            if (!inputValue.StartsWith(m_Prefix))
             {
-                if (commandWithoutPrefix == null)
+                if (m_CommandWithoutPrefix == null)
                 {
                     return false;
                 }
                 else
                 {
-                    return ProcessCommand(commandWithoutPrefix.CommandWord, inputValue.Split(' '));
+                    return ProcessCommand(m_CommandWithoutPrefix.CommandWord, inputValue.Split(' '));
                 }
 
             }
             else
             {
-                inputValue = inputValue.Remove(0, prefix.Length);
+                inputValue = inputValue.Remove(0, m_Prefix.Length);
                 string[] inputSplit = inputValue.Split(' ');
                 string commandInput = inputSplit[0];
                 string[] args = inputSplit.Skip(1).ToArray();
@@ -51,7 +49,7 @@ namespace ExpressoBits.Console
 
         public bool ProcessCommand(string commandInput, string[] args)
         {
-            foreach (var command in commands)
+            foreach (var command in m_Commands)
             {
                 if (!commandInput.Equals(command.CommandWord, StringComparison.OrdinalIgnoreCase))
                 {

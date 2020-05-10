@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using ExpressoBits.Console.Commands;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -17,9 +18,7 @@ namespace ExpressoBits.Console
         [SerializeField]
         private ConsoleCommand[] commands = new ConsoleCommand[0];
 
-        [SerializeField]
-        /** Command process when process string without prefix */
-        private ConsoleCommand commandWithoutPrefix = null;
+        [SerializeField] private ConsoleCommand commandWithoutPrefix = null;
 
 
         [Header("UI")]
@@ -28,21 +27,21 @@ namespace ExpressoBits.Console
         public Font font;
 
         [Header("Events")]
-        public UnityEvent OnCloseCommander;
-        public UnityEvent OnOpenCommander;
+        public UnityEvent onCloseCommander;
+        public UnityEvent onOpenCommander;
 
         #region private values
-        private Canvas UICanvas = null;
+        private Canvas m_UiCanvas = null;
 
-        private InputField consoleInput;
+        private InputField m_ConsoleInput;
 
-        private DeveloperConsole developerConsole;
+        private DeveloperConsole m_DeveloperConsole;
         private DeveloperConsole DeveloperConsole
         {
             get
             {
-                if (developerConsole != null) { return developerConsole; }
-                return developerConsole = new DeveloperConsole(prefix, commands, commandWithoutPrefix);
+                if (m_DeveloperConsole != null) { return m_DeveloperConsole; }
+                return m_DeveloperConsole = new DeveloperConsole(prefix, commands, commandWithoutPrefix);
             }
         }
 
@@ -51,14 +50,14 @@ namespace ExpressoBits.Console
         private void Awake()
         {
 
-            UICanvas = GetComponentInChildren<Canvas>();
+            m_UiCanvas = GetComponentInChildren<Canvas>();
 
-            consoleInput = Instantiate<InputField>(consoleInputPrefab, UICanvas.gameObject.transform);
-            consoleInput.onValueChanged.AddListener(delegate { Send(); });
+            m_ConsoleInput = Instantiate<InputField>(consoleInputPrefab, m_UiCanvas.gameObject.transform);
+            m_ConsoleInput.onValueChanged.AddListener(delegate { Send(); });
 
-            consoleInput.GetComponentInChildren<Text>().font = font;
+            m_ConsoleInput.GetComponentInChildren<Text>().font = font;
 
-            consoleInput.gameObject.SetActive(false);
+            m_ConsoleInput.gameObject.SetActive(false);
 
 
         }
@@ -67,43 +66,39 @@ namespace ExpressoBits.Console
         #region Open/Close
         public void CloseCommander()
         {
-            consoleInput.gameObject.SetActive(false);
+            m_ConsoleInput.gameObject.SetActive(false);
             //consoleInput.DeactivateInputField();
-            OnCloseCommander.Invoke();
+            onCloseCommander.Invoke();
         }
 
         public void OpenCommander()
         {
-            consoleInput.gameObject.SetActive(true);
-            consoleInput.ActivateInputField();
-            OnOpenCommander.Invoke();
+            m_ConsoleInput.gameObject.SetActive(true);
+            m_ConsoleInput.ActivateInputField();
+            onOpenCommander.Invoke();
         }
 
         #endregion
 
         public void ProcessCommand(string inputValue)
         {
-            bool success = DeveloperConsole.ProcessCommand(inputValue);
+            var success = DeveloperConsole.ProcessCommand(inputValue);
 
-            consoleInput.text = string.Empty;
+            m_ConsoleInput.text = string.Empty;
         }
 
         public void Send()
         {
-
-            if (consoleInput.text.Contains("\n"))
-            {
-                consoleInput.text = consoleInput.text.Remove(consoleInput.text.LastIndexOf("\n"));
-                ProcessCommand(consoleInput.text);
-            }
-
-
-
+            if (!m_ConsoleInput.text.Contains("\n")) return;
+            string text;
+            text = (text = m_ConsoleInput.text).Remove(m_ConsoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
+            m_ConsoleInput.text = text;
+            ProcessCommand(text);
         }
 
         public void Toggle()
         {
-            if (consoleInput.gameObject.activeSelf)
+            if (m_ConsoleInput.gameObject.activeSelf)
             {
                 CloseCommander();
             }

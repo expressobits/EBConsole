@@ -50,7 +50,7 @@ namespace ExpressoBits.Console.Commands
             // Debug.LogWarning(logText);
             // 
             if (Commander.Instance.GetComponent<Logs>() != null)
-                Logs.Instance.LogWarning("Gravity command need 3 or 1 argument number!");
+                Logs.Instance.LogWarn("Gravity command need 3 or 1 argument number!");
             return false;
         }
     }

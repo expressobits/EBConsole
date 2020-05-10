@@ -13,12 +13,12 @@ namespace ExpressoBits.Console.Commands
 
         public override bool Process(string[] args)
         {
-            string logText = string.Join(" ", args);
+            var logText = string.Join(" ", args);
 
             if (logText.Length <= 0) return false;
 
             Debug.LogWarning(logText);
-            if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogWarning(logText);
+            if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogWarn(logText);
 
             return true;
         }

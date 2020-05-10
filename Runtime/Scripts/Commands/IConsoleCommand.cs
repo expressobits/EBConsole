@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ExpressoBits.Console.Commands
+﻿namespace ExpressoBits.Console.Commands
 {
     public interface IConsoleCommand
     {

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 namespace ExpressoBits.Console.UI
 {
@@ -11,19 +10,17 @@ namespace ExpressoBits.Console.UI
 
         public Image background;
 
-        private string logText;
-        private float timer = 2f;
+        private string m_LogText;
 
         public void Setup(string logText, Font font, float timer, Sprite sprite, Color color)
         {
             Setup(logText, font, sprite, color);
-            this.timer = timer;
             Destroy(gameObject, timer);
         }
 
         public void Setup(string logText, Font font, Sprite sprite, Color color)
         {
-            this.logText = logText;
+            this.m_LogText = logText;
             text.font = font;
             image.sprite = sprite;
             color.a = background.color.a;
@@ -38,7 +35,7 @@ namespace ExpressoBits.Console.UI
 
         private void Start()
         {
-            text.text = logText;
+            text.text = m_LogText;
         }
 
 
