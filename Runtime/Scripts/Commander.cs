@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using ExpressoBits.Console.Commands;
 using UnityEngine.UI;
@@ -15,10 +16,9 @@ namespace ExpressoBits.Console
         private string prefix = string.Empty;
 
         [Header("List of valid commands")]
-        [SerializeField]
-        private ConsoleCommand[] commands = new ConsoleCommand[0];
+        public List<ConsoleCommand> commands = new List<ConsoleCommand>();
 
-        [SerializeField] private ConsoleCommand commandWithoutPrefix = null;
+        [SerializeField] private ConsoleCommand commandWithoutPrefix;
 
 
         [Header("UI")]
@@ -31,7 +31,7 @@ namespace ExpressoBits.Console
         public UnityEvent onOpenCommander;
 
         #region private values
-        private Canvas m_UiCanvas = null;
+        private Canvas m_UiCanvas;
 
         private InputField m_ConsoleInput;
 
@@ -52,7 +52,7 @@ namespace ExpressoBits.Console
 
             m_UiCanvas = GetComponentInChildren<Canvas>();
 
-            m_ConsoleInput = Instantiate<InputField>(consoleInputPrefab, m_UiCanvas.gameObject.transform);
+            m_ConsoleInput = Instantiate(consoleInputPrefab, m_UiCanvas.gameObject.transform);
             m_ConsoleInput.onValueChanged.AddListener(delegate { Send(); });
 
             m_ConsoleInput.GetComponentInChildren<Text>().font = font;
@@ -82,7 +82,7 @@ namespace ExpressoBits.Console
 
         public void ProcessCommand(string inputValue)
         {
-            var success = DeveloperConsole.ProcessCommand(inputValue);
+            DeveloperConsole.ProcessCommand(inputValue);
 
             m_ConsoleInput.text = string.Empty;
         }
@@ -90,8 +90,7 @@ namespace ExpressoBits.Console
         public void Send()
         {
             if (!m_ConsoleInput.text.Contains("\n")) return;
-            string text;
-            text = (text = m_ConsoleInput.text).Remove(m_ConsoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
+            var text = (m_ConsoleInput.text).Remove(m_ConsoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
             m_ConsoleInput.text = text;
             ProcessCommand(text);
         }
@@ -107,6 +106,13 @@ namespace ExpressoBits.Console
                 OpenCommander();
             }
         }
+
+        // TODO create métodos que adicionam action para comandos
+        public void AddCommand(ConsoleCommand command)
+        {
+            commands.Add(command);
+        }
+
     }
 
 }

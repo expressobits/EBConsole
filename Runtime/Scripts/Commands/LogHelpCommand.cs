@@ -15,12 +15,22 @@ namespace ExpressoBits.Console.Commands
         {
             string logText = string.Join(" ", args);
 
-            if (logText.Length <= 0) return false;
+            if (logText.Length <= 0)
+            {
+                if (Commander.Instance.GetComponent<Logs>() == null) return false;
+                foreach(IConsoleCommand command in Commander.Instance.commands)
+                {
+                    Logs.Instance.LogHelp("/"+command.CommandWord);
+                }
+                Logs.Instance.LogHelp("--- All Valid Commands ---");
+                return true;
+            }
 
             Debug.Log(logText);
             if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogHelp(logText);
 
             return true;
         }
+
     }
 }

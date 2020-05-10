@@ -1,3 +1,4 @@
+using ExpressoBits.Console.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -40,6 +41,6 @@ namespace ExpressoBits.Console
             m_Commander.onOpenCommander.AddListener(m_Open);
         }
 
-
     }
+    
 }
