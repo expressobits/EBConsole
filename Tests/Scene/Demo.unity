@@ -135,51 +135,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
-      propertyPath: commands.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[0]
+      propertyPath: font
       value: 
-      objectReference: {fileID: 11400000, guid: b10f4760d4143d34b830cb496c2cbb52,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
+      objectReference: {fileID: 12800000, guid: cd54ed392bb47b846ba7a5c0ba5a1891,
         type: 3}
-      propertyPath: commands.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: f263c7615054f4b43b49e5920da11c15,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 32f276c4388c929438f4d7da07bb0167,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: a37067cb3ce005443bf735c6f7a19294,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 08b74e1ffbf42fe449d7a40580bc0df2,
-        type: 2}
-    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: commands.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2d338ad73e07c1241944083afa175b3c,
-        type: 2}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -234,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445859979588379792, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
