@@ -128,6 +128,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: errorLogAttribute.backgroundColor.r
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: warnLogAttribute.backgroundColor.r
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: warnLogAttribute.backgroundColor.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: helpLogAttribute.backgroundColor.b
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: successLogAttribute.backgroundColor.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601733, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_Name
@@ -139,15 +164,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
         type: 2}
+    - target: {fileID: 6445859978175601738, guid: 609df2bc460383745b9bf5261ff3d045,
+        type: 3}
+      propertyPath: commandWithoutPrefix
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
+        type: 2}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 424.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601739, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
