@@ -8,7 +8,7 @@ namespace ExpressoBits.Console.Commands
 
         private void Awake()
         {
-            commandWord = "warning";
+            commandWord = "warn";
         }
 
         public override bool Process(string[] args)
