@@ -18,7 +18,7 @@ namespace ExpressoBits.Console
         private int m_ActualIndex;
 
         private const int noValue = -1;
-        private ConsoleCanvas m_ConsoleCanvas;
+        private VisualConsole m_VisualConsole;
         
         //TODO save and load history preferences
         
@@ -26,7 +26,7 @@ namespace ExpressoBits.Console
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
-            m_ConsoleCanvas = GetComponentInChildren<ConsoleCanvas>();
+            m_VisualConsole = GetComponentInChildren<VisualConsole>();
             history = new List<string>();
         }
 
@@ -48,9 +48,9 @@ namespace ExpressoBits.Console
 
         private void AddLastCommand()
         {
-            if (m_ConsoleCanvas.consoleInput.text.Length > 0)
+            if (m_VisualConsole.consoleInput.text.Length > 0)
             {
-                history.Add(m_ConsoleCanvas.consoleInput.text);
+                history.Add(m_VisualConsole.consoleInput.text);
                 if (history.Count > maxHistoryRegistry)
                 {
                     history.RemoveAt(0);
@@ -68,8 +68,8 @@ namespace ExpressoBits.Console
                 if (history.Count == 0) return;
                 m_ActualIndex++;
                 if (m_ActualIndex == history.Count) m_ActualIndex = 0;
-                m_ConsoleCanvas.consoleInput.text = history[m_ActualIndex];
-                m_ConsoleCanvas.consoleInput.caretPosition = m_ConsoleCanvas.consoleInput.text.Length;
+                m_VisualConsole.consoleInput.text = history[m_ActualIndex];
+                m_VisualConsole.consoleInput.caretPosition = m_VisualConsole.consoleInput.text.Length;
             }
 
             else if (Input.GetKeyDown(upKeyCode))
@@ -79,15 +79,15 @@ namespace ExpressoBits.Console
                 switch (m_ActualIndex)
                 {
                     case noValue:
-                        m_ConsoleCanvas.consoleInput.text = "";
+                        m_VisualConsole.consoleInput.text = "";
                         return;
                     case -2:
                         m_ActualIndex = history.Count-1;
                         break;
                 }
 
-                m_ConsoleCanvas.consoleInput.text = history[m_ActualIndex];
-                m_ConsoleCanvas.consoleInput.caretPosition = m_ConsoleCanvas.consoleInput.text.Length;
+                m_VisualConsole.consoleInput.text = history[m_ActualIndex];
+                m_VisualConsole.consoleInput.caretPosition = m_VisualConsole.consoleInput.text.Length;
             }
         }
         

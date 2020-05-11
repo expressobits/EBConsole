@@ -22,13 +22,13 @@ namespace ExpressoBits.Console
         public LogAttribute successLogAttribute;
         
         private Commander m_Commander;
-        private ConsoleCanvas m_ConsoleCanvas;
+        private VisualConsole m_VisualConsole;
         
 
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
-            m_ConsoleCanvas = GetComponentInChildren<ConsoleCanvas>();
+            m_VisualConsole = GetComponentInChildren<VisualConsole>();
         }
 
         
@@ -37,7 +37,7 @@ namespace ExpressoBits.Console
         // TODO default value
         public void Log(string logText, float timer, Sprite sprite, Color color)
         {
-            var logMessage = m_ConsoleCanvas.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
+            var logMessage = m_VisualConsole.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
             messages.Enqueue(logMessage);
             if (messages.Count <= 32) return;
             var e = messages.Dequeue();

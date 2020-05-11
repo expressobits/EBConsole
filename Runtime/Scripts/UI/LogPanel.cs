@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ExpressoBits.Console.UI
 {
     public class LogPanel : MonoBehaviour
     {
-        public GameObject logToast;
-
+        public GameObject logPanelToast;
         public GameObject logPanelScroll;
-        public GameObject logScroll;
+        
+        public GameObject logScrollContent;
+
     }
 }
 

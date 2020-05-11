@@ -128,24 +128,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1917564330, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 481393876, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393876, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393876, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393876, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: defaultLogAttribute.backgroundColor.r
+    - target: {fileID: 481393876, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393877, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: align
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393878, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: defaultLogAttribute.backgroundColor.g
+    - target: {fileID: 481393878, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045,
-        type: 3}
-      propertyPath: defaultLogAttribute.backgroundColor.b
+    - target: {fileID: 481393878, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481393878, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: m_Color.a
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 6445859978175601733, guid: 609df2bc460383745b9bf5261ff3d045,
         type: 3}
