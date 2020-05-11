@@ -1,5 +1,5 @@
 # Welcome to Expresso Bits Console 👋
-![Version](https://img.shields.io/badge/version-0.7.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.8.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](todo-doc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
@@ -21,14 +21,34 @@ and you're done!
 Add prefab Console to scene! 
 For it to work correctly, an EventSystem is needed in your scene.
 
-### Toggle Commander
+## Components
+
+### Toggle Commander Component
+
 By default the component added to the prefab called <i>ToggleCommander</i> opens the console with <i>Enter</i> and closes the console with <i>Esc</i>. You can modify these keys for your convenience, and you can also remove this component if you want another component / object to handle the commander.
 
-### Commands
-You can create custom commands by extending the <i>ConsoleCommand</i> class. 
+### Commander component
+
+The main component of the console system.
+You can create custom commands by extending the <i>ConsoleCommand</i> class for add in commander component. 
 Then just add the command's scriptable object to the <i>Commander</i> component.
 
-### Commandos de log
+### Helper commander component
+
+![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/helper.png)
+
+Prints help messages to open the console, to close and the console version.
+
+### History component
+
+![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/history.gif)
+
+Stores the history of commands entered on the console, 
+and also manages keyboard entries to navigate between the history (by default up and down arrow keys.
+
+
+
+## Log methods
 ![LogTypes](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/LogTypes.png)
 
 It still has basic log commands that add messages to a panel below the console. These can be called up with:
@@ -60,7 +80,20 @@ or type in console:
 ```\clear```
 
 
-### Commandos 
+### Sample commands
+
+/log <message>
+/error <message>
+/warn <message>
+/error <message>
+/success <message>
+/help <message>
+/history 
+/clear
+/gravity <float> / <float> <float> <float>
+/help
+
+Please let me know some command ideas to be added here, use the [issues page](https://github.com/ExpressoBits/EBConsole/issues) for that!
 
 ## Authors
 

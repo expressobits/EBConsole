@@ -23,7 +23,9 @@ namespace ExpressoBits.Console
         
         private Commander m_Commander;
         private VisualConsole m_VisualConsole;
-        
+        [Range(0,2048)]
+        public int maxLogCount = 128;
+
 
         private void Awake()
         {
@@ -39,7 +41,7 @@ namespace ExpressoBits.Console
         {
             var logMessage = m_VisualConsole.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
             messages.Enqueue(logMessage);
-            if (messages.Count <= 32) return;
+            if (messages.Count <= maxLogCount) return;
             var e = messages.Dequeue();
             Destroy(e.gameObject);
         }
