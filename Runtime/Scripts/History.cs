@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ExpressoBits.Console.UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace ExpressoBits.Console
 {
@@ -15,15 +14,19 @@ namespace ExpressoBits.Console
 
         [Range(0, 256)] public int maxHistoryRegistry;
         
-        [HideInInspector]
         public List<string> history;
         private int m_ActualIndex;
+
+        private const int noValue = -1;
+        private ConsoleCanvas m_ConsoleCanvas;
         
-        private static readonly int NoValue = -1;
+        //TODO save and load history preferences
+        
         
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
+            m_ConsoleCanvas = GetComponentInChildren<ConsoleCanvas>();
             history = new List<string>();
         }
 
@@ -45,9 +48,9 @@ namespace ExpressoBits.Console
 
         private void AddLastCommand()
         {
-            if (m_Commander.consoleInput.text.Length > 0)
+            if (m_ConsoleCanvas.consoleInput.text.Length > 0)
             {
-                history.Add(m_Commander.consoleInput.text);
+                history.Add(m_ConsoleCanvas.consoleInput.text);
                 if (history.Count > maxHistoryRegistry)
                 {
                     history.RemoveAt(0);
@@ -55,7 +58,7 @@ namespace ExpressoBits.Console
 
             }
             
-            m_ActualIndex = NoValue;
+            m_ActualIndex = noValue;
         }
 
         private void Update()
@@ -65,23 +68,26 @@ namespace ExpressoBits.Console
                 if (history.Count == 0) return;
                 m_ActualIndex++;
                 if (m_ActualIndex == history.Count) m_ActualIndex = 0;
-                m_Commander.consoleInput.text = history[m_ActualIndex];
-                m_Commander.consoleInput.caretPosition = m_Commander.consoleInput.text.Length;
+                m_ConsoleCanvas.consoleInput.text = history[m_ActualIndex];
+                m_ConsoleCanvas.consoleInput.caretPosition = m_ConsoleCanvas.consoleInput.text.Length;
             }
 
             else if (Input.GetKeyDown(upKeyCode))
             {
                 if (history.Count == 0) return;
                 m_ActualIndex--;
-                if (m_ActualIndex == NoValue)
+                switch (m_ActualIndex)
                 {
-                    m_Commander.consoleInput.text = "";
-                    return;
+                    case noValue:
+                        m_ConsoleCanvas.consoleInput.text = "";
+                        return;
+                    case -2:
+                        m_ActualIndex = history.Count-1;
+                        break;
                 }
 
-                if (m_ActualIndex == -2) m_ActualIndex = history.Count-1;
-                m_Commander.consoleInput.text = history[m_ActualIndex];
-                m_Commander.consoleInput.caretPosition = m_Commander.consoleInput.text.Length;
+                m_ConsoleCanvas.consoleInput.text = history[m_ActualIndex];
+                m_ConsoleCanvas.consoleInput.caretPosition = m_ConsoleCanvas.consoleInput.text.Length;
             }
         }
         

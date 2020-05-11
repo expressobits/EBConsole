@@ -58,11 +58,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08b74e1ffbf42fe449d7a40580bc0df2, type: 2}
   - {fileID: 11400000, guid: 2d338ad73e07c1241944083afa175b3c, type: 2}
   - {fileID: 11400000, guid: dd4ba8c949d1b1747afc63f40a816199, type: 2}
+  - {fileID: 11400000, guid: 38e55b013d85dfc4194a83aa8f57f6a2, type: 2}
   commandWithoutPrefix: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
     type: 2}
-  consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
-    type: 3}
-  font: {fileID: 12800000, guid: cd54ed392bb47b846ba7a5c0ba5a1891, type: 3}
   onCloseCommander:
     m_PersistentCalls:
       m_Calls: []
@@ -72,7 +70,9 @@ MonoBehaviour:
   onProcessCommand:
     m_PersistentCalls:
       m_Calls: []
-  consoleInput: {fileID: 0}
+  onFinishProcessCommand:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4474387821887415923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,8 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f607bfccc7a82d04390ca1ad039fc3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
-  uiLogPrefab: {fileID: 573168610, guid: b76fd55d7c9051d4698ed7b21ee73940, type: 3}
   defaultTimer: 8
   defaultLogAttribute:
     icon: {fileID: 21300000, guid: 23efc584638783b43b82e3af26c47d38, type: 3}
@@ -159,6 +157,7 @@ GameObject:
   - component: {fileID: 6445859979588379793}
   - component: {fileID: 6445859979588379792}
   - component: {fileID: 6445859979588379795}
+  - component: {fileID: 6977142427097991979}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -219,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -245,3 +244,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6977142427097991979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6445859979588379789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae64ce429fa9fa0438d95e10dd0d1ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
+    type: 3}
+  messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
+  uiLogPrefab: {fileID: 573168610, guid: b76fd55d7c9051d4698ed7b21ee73940, type: 3}
+  font: {fileID: 12800000, guid: cd54ed392bb47b846ba7a5c0ba5a1891, type: 3}
+  consoleInput: {fileID: 0}

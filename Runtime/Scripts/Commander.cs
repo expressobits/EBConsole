@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ExpressoBits.Console.Commands;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using ExpressoBits.Console.Utils;
-using UnityEngine.Serialization;
 
 namespace ExpressoBits.Console
 {
@@ -22,22 +20,15 @@ namespace ExpressoBits.Console
         [SerializeField] private ConsoleCommand commandWithoutPrefix;
 
 
-        [Header("UI")]
-        public InputField consoleInputPrefab;
-
-        public Font font;
-
         [Header("Events")]
         public UnityEvent onCloseCommander;
         public UnityEvent onOpenCommander;
         public UnityEvent onProcessCommand;
+        public UnityEvent onFinishProcessCommand;
         
         #region private values
-        private Canvas m_UiCanvas;
-        
-        [HideInInspector]
-        public InputField consoleInput;
 
+        private bool m_ActiveInput;
         private DeveloperConsole m_DeveloperConsole;
         private DeveloperConsole DeveloperConsole
         {
@@ -50,34 +41,22 @@ namespace ExpressoBits.Console
 
         #endregion
 
-        private void Awake()
+        private void Start()
         {
-
-            m_UiCanvas = GetComponentInChildren<Canvas>();
-
-            consoleInput = Instantiate(consoleInputPrefab, m_UiCanvas.gameObject.transform);
-            consoleInput.onValueChanged.AddListener(delegate { Send(); });
-
-            consoleInput.GetComponentInChildren<Text>().font = font;
-
-            consoleInput.gameObject.SetActive(false);
-
-
+            CloseCommander();
         }
 
 
         #region Open/Close
         public void CloseCommander()
         {
-            consoleInput.gameObject.SetActive(false);
-            //consoleInput.DeactivateInputField();
+            m_ActiveInput = false;
             onCloseCommander.Invoke();
         }
 
         public void OpenCommander()
         {
-            consoleInput.gameObject.SetActive(true);
-            consoleInput.ActivateInputField();
+            m_ActiveInput = true;
             onOpenCommander.Invoke();
         }
 
@@ -85,24 +64,17 @@ namespace ExpressoBits.Console
 
         public void ProcessCommand(string inputValue)
         {
-            DeveloperConsole.ProcessCommand(inputValue);
             
+            DeveloperConsole.ProcessCommand(inputValue);
             onProcessCommand.Invoke();
-
-            consoleInput.text = string.Empty;
+            onFinishProcessCommand.Invoke();
+            
         }
 
-        public void Send()
-        {
-            if (!consoleInput.text.Contains("\n")) return;
-            var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
-            consoleInput.text = text;
-            ProcessCommand(text);
-        }
 
         public void Toggle()
         {
-            if (consoleInput.gameObject.activeSelf)
+            if (m_ActiveInput)
             {
                 CloseCommander();
             }
@@ -112,7 +84,7 @@ namespace ExpressoBits.Console
             }
         }
 
-        // TODO create métodos que adicionam action para comandos
+        // TODO add in runtime commands
         public void AddCommand(ConsoleCommand command)
         {
             commands.Add(command);

@@ -7,7 +7,6 @@ namespace ExpressoBits.Console.UI
     {
         public Text text;
         public Image image;
-
         public Image background;
 
         private string m_LogText;
@@ -25,12 +24,6 @@ namespace ExpressoBits.Console.UI
             image.sprite = sprite;
             color.a = background.color.a;
             background.color = color;
-
-        }
-
-        private void Awake()
-        {
-            text = GetComponentInChildren<Text>();
         }
 
         private void Start()

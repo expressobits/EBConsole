@@ -1,4 +1,3 @@
-using ExpressoBits.Console.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +13,7 @@ namespace ExpressoBits.Console
         public string helpTextToClose = "Type <b><color=lightgreen>ESC</color></b> to open the console";
 
         private Commander m_Commander;
+        private Logs m_Logs;
         private ToggleCommander m_ToggleCommander;
 
         private UnityAction m_Open;
@@ -21,10 +21,12 @@ namespace ExpressoBits.Console
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
+            m_Logs = GetComponent<Logs>();
         }
 
         private void Start()
         {
+            if (!m_Logs) return;
             //NOTE get package version?
             Logs.Instance.Log("Expresso Bits Console <color=red>v0.7.0</color>", 3f);
 
