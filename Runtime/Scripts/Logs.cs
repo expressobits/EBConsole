@@ -32,11 +32,7 @@ namespace ExpressoBits.Console
             m_Commander = GetComponent<Commander>();
             m_VisualConsole = GetComponentInChildren<VisualConsole>();
         }
-
         
-        
-
-        // TODO default value
         public void Log(string logText, float timer, Sprite sprite, Color color)
         {
             var logMessage = m_VisualConsole.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
