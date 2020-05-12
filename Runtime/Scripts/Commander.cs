@@ -7,6 +7,7 @@ using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName:"Console/Commander")]
     public class Commander : Singleton<Commander>
     {
 

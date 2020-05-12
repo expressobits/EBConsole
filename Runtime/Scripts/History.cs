@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName:"Console/History")]
     [RequireComponent(typeof(Commander))]
     public class History : MonoBehaviour
     {

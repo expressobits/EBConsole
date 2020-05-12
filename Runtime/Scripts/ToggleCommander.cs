@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName:"Console/Toggle Commander")]
     [RequireComponent(typeof(Commander))]
     public class ToggleCommander : MonoBehaviour
     {
@@ -11,23 +10,23 @@ namespace ExpressoBits.Console
         public KeyCode openKey = KeyCode.Return;
         public KeyCode closeKey = KeyCode.Escape;
 
-        private Commander commander;
+        private Commander m_Commander;
 
         private void Awake()
         {
-            commander = GetComponent<Commander>();
+            m_Commander = GetComponent<Commander>();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(openKey))
             {
-                commander.OpenCommander();
+                m_Commander.OpenCommander();
             }
 
             if (Input.GetKeyDown(closeKey))
             {
-                commander.CloseCommander();
+                m_Commander.CloseCommander();
             }
         }
 

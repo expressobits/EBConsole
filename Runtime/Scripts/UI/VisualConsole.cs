@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace ExpressoBits.Console.UI
 {
+    [AddComponentMenu(menuName:"UI/Visual Console")]
     public class VisualConsole : MonoBehaviour
     {
         private Commander m_Commander;

@@ -5,6 +5,7 @@ using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName:"Console/Logs")]
     [RequireComponent(typeof(Commander))]
     public class Logs : Singleton<Logs>
     {
@@ -20,8 +21,7 @@ namespace ExpressoBits.Console
         public LogAttribute errorLogAttribute;
         public LogAttribute helpLogAttribute;
         public LogAttribute successLogAttribute;
-        
-        private Commander m_Commander;
+
         private VisualConsole m_VisualConsole;
         [Range(0,2048)]
         public int maxLogCount = 128;
@@ -29,7 +29,6 @@ namespace ExpressoBits.Console
 
         private void Awake()
         {
-            m_Commander = GetComponent<Commander>();
             m_VisualConsole = GetComponentInChildren<VisualConsole>();
         }
         

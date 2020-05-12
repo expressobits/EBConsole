@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName:"Console/Help Commander")]
     [RequireComponent(typeof(Commander), typeof(ToggleCommander))]
     public class HelpCommander : MonoBehaviour
     {
