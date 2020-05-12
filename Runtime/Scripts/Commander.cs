@@ -6,7 +6,7 @@ using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {
-    [AddComponentMenu(menuName:"Console/Commander")]
+    [AddComponentMenu(menuName: "Console/Commander")]
     public class Commander : Singleton<Commander>
     {
 
@@ -14,8 +14,9 @@ namespace ExpressoBits.Console
         [SerializeField]
         private string prefix = string.Empty;
 
-        [Header("List of valid commands")]
-        public List<ConsoleCommand> commands = new List<ConsoleCommand>();
+        [Header("List of valid Static commands")]
+        public ConsoleCommand[] staticCommands;
+        public List<ICommand> commands = new List<ICommand>();
 
         [SerializeField] private ConsoleCommand commandWithoutPrefix;
 
@@ -25,7 +26,7 @@ namespace ExpressoBits.Console
         public UnityEvent onOpenCommander;
         public UnityEvent onProcessCommand;
         public UnityEvent onFinishProcessCommand;
-        
+
         #region private values
 
         private bool m_ActiveInput;
@@ -34,6 +35,10 @@ namespace ExpressoBits.Console
         {
             get
             {
+                foreach (var item in staticCommands)
+                {
+                    commands.Add(item);
+                }
                 if (m_DeveloperConsole != null) { return m_DeveloperConsole; }
                 return m_DeveloperConsole = new DeveloperConsole(prefix, commands, commandWithoutPrefix);
             }
@@ -64,11 +69,11 @@ namespace ExpressoBits.Console
 
         public void ProcessCommand(string inputValue)
         {
-            
+
             DeveloperConsole.ProcessCommand(inputValue);
             onProcessCommand.Invoke();
             onFinishProcessCommand.Invoke();
-            
+
         }
 
 
@@ -84,8 +89,9 @@ namespace ExpressoBits.Console
             }
         }
 
-        // TODO add in runtime commands
-        public void AddCommand(ConsoleCommand command)
+        // Adiciona comando criado em tempo de execução, basta criar um com
+        // <code>new Command("test",delegate{ Test(); })</code>
+        public void AddCommand(Command command)
         {
             commands.Add(command);
         }

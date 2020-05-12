@@ -18,9 +18,9 @@ namespace ExpressoBits.Console.Commands
             if (logText.Length <= 0)
             {
                 if (Commander.Instance.GetComponent<Logs>() == null) return false;
-                foreach(IConsoleCommand command in Commander.Instance.commands)
+                foreach (ICommand command in Commander.Instance.commands)
                 {
-                    Logs.Instance.LogHelp("/"+command.CommandWord);
+                    Logs.Instance.LogHelp("/" + command.CommandWord);
                 }
                 Logs.Instance.LogHelp("--- All Valid Commands ---");
                 return true;
