@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ExpressoBits.Console.UI;
 using UnityEngine;
 
@@ -9,31 +10,42 @@ namespace ExpressoBits.Console
     {
         public KeyCode upKeyCode = KeyCode.UpArrow;
         public KeyCode downKeyCode = KeyCode.DownArrow;
-
-        private Commander m_Commander;
-
         [Range(0, 256)] public int maxHistoryRegistry;
-        
         public List<string> history;
+        
         private int m_ActualIndex;
-
         private const int noValue = -1;
         private VisualConsole m_VisualConsole;
-        
-        //TODO save and load history preferences
-        
+        private const string saveHistoryKey = "br.com.ExpressoBits.Console.History";
+        private Commander m_Commander;
         
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
             m_VisualConsole = GetComponentInChildren<VisualConsole>();
             history = new List<string>();
+            LoadHistory();
+        }
+
+        private void LoadHistory()
+        {
+            if (PlayerPrefs.HasKey(saveHistoryKey))
+            {
+                var raw = PlayerPrefs.GetString(saveHistoryKey);
+                var commands = raw.Split('\n');
+                foreach (var command in commands)
+                {
+                    history.Add(command);
+                }
+            }
         }
 
         private void Start()
         {
             m_Commander.onOpenCommander.AddListener(delegate { enabled = true; });
             m_Commander.onCloseCommander.AddListener(delegate { enabled = false; });
+            
+            
         }
 
         private void OnEnable()
@@ -90,8 +102,12 @@ namespace ExpressoBits.Console
                 m_VisualConsole.consoleInput.caretPosition = m_VisualConsole.consoleInput.text.Length;
             }
         }
-        
-        
 
+        private void OnDestroy()
+        {
+            var value = history.Aggregate("", (current, command) => current + (command + "\n"));
+            PlayerPrefs.SetString(saveHistoryKey,value);
+            PlayerPrefs.Save();
+        }
     }
 }
