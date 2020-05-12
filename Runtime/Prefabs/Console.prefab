@@ -33,11 +33,11 @@ RectTransform:
   m_Father: {fileID: 6445859979588379794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 355}
-  m_Pivot: {x: 0.5, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &481393879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae64ce429fa9fa0438d95e10dd0d1ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  align: 1
+  align: 0
   consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
     type: 3}
   messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
@@ -194,6 +194,7 @@ MonoBehaviour:
   successLogAttribute:
     icon: {fileID: 21300000, guid: b2c2cf9f2b0907d49a56b232cab2ba4d, type: 3}
     backgroundColor: {r: 0, g: 0.7529412, b: 0, a: 1}
+  maxLogCount: 128
 --- !u!114 &4474387821887415922
 MonoBehaviour:
   m_ObjectHideFlags: 0
