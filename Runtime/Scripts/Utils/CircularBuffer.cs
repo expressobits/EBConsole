@@ -2,27 +2,27 @@ namespace ExpressoBits.Console.Utils
 {
     public class CircularBuffer<T>
     {
-        public T[] array;
+        public readonly T[] Array;
         private int m_StartIndex;
 
         public int Count { get; private set; }
-        public T this[int index] => array[(m_StartIndex + index) % array.Length];
+        public T this[int index] => Array[(m_StartIndex + index) % Array.Length];
 
         public CircularBuffer(int capacity)
         {
-            array = new T[capacity];
+            Array = new T[capacity];
         }
 
         public void Add(T value)
         {
-            if (Count < array.Length)
+            if (Count < Array.Length)
             {
-                array[Count++] = value;
+                Array[Count++] = value;
             }
             else
             {
-                array[m_StartIndex] = value;
-                if (++m_StartIndex >= array.Length)
+                Array[m_StartIndex] = value;
+                if (++m_StartIndex >= Array.Length)
                     m_StartIndex = 0;
             }
         }

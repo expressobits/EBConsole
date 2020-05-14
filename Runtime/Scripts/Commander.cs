@@ -96,6 +96,11 @@ namespace ExpressoBits.Console
             commands.Add(command);
         }
 
+        public void AddCommand(string commandWord, UnityAction action)
+        {
+            commands.Add(new Command(commandWord,action));
+        }
+
     }
 
 }

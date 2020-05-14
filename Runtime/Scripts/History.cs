@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ExpressoBits.Console.UI;
+﻿using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 using UnityEngine;
 
@@ -31,14 +29,12 @@ namespace ExpressoBits.Console
 
         private void LoadHistory()
         {
-            if (PlayerPrefs.HasKey(saveHistoryKey))
+            if (!PlayerPrefs.HasKey(saveHistoryKey)) return;
+            var raw = PlayerPrefs.GetString(saveHistoryKey);
+            var commands = raw.Split('\n');
+            foreach (var command in commands)
             {
-                var raw = PlayerPrefs.GetString(saveHistoryKey);
-                var commands = raw.Split('\n');
-                foreach (var command in commands)
-                {
-                    history.Add(command);
-                }
+                history.Add(command);
             }
         }
 
