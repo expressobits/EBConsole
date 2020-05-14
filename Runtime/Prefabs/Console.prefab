@@ -142,15 +142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefix: /
-  commands:
+  staticCommands:
   - {fileID: 11400000, guid: b10f4760d4143d34b830cb496c2cbb52, type: 2}
   - {fileID: 11400000, guid: f263c7615054f4b43b49e5920da11c15, type: 2}
+  - {fileID: 11400000, guid: dd4ba8c949d1b1747afc63f40a816199, type: 2}
   - {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6, type: 2}
   - {fileID: 11400000, guid: 32f276c4388c929438f4d7da07bb0167, type: 2}
   - {fileID: 11400000, guid: a37067cb3ce005443bf735c6f7a19294, type: 2}
   - {fileID: 11400000, guid: 08b74e1ffbf42fe449d7a40580bc0df2, type: 2}
   - {fileID: 11400000, guid: 2d338ad73e07c1241944083afa175b3c, type: 2}
-  - {fileID: 11400000, guid: dd4ba8c949d1b1747afc63f40a816199, type: 2}
   - {fileID: 11400000, guid: 38e55b013d85dfc4194a83aa8f57f6a2, type: 2}
   commandWithoutPrefix: {fileID: 11400000, guid: 0f8f2663e4f1fec4896396574b9f7fb6,
     type: 2}
@@ -238,7 +238,6 @@ MonoBehaviour:
   upKeyCode: 273
   downKeyCode: 274
   maxHistoryRegistry: 256
-  history: []
 --- !u!1 &6445859979588379789
 GameObject:
   m_ObjectHideFlags: 0
