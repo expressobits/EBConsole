@@ -4,12 +4,9 @@ using UnityEngine.UI;
 
 namespace ExpressoBits.Console.UI
 {
-    [AddComponentMenu(menuName:"UI/Visual Console")]
-    public class VisualConsole : MonoBehaviour
+    [AddComponentMenu(menuName:"UI/Visual Consoler")]
+    public class VisualConsoler : MonoBehaviour
     {
-        private Commander m_Commander;
-        private Logs m_Logs;
-        
         public ConsoleAlign align;
         
         [Header("UI Prefabs")]
@@ -26,8 +23,7 @@ namespace ExpressoBits.Console.UI
 
         private void Awake()
         {
-            m_Commander = GetComponentInParent<Commander>();
-            if (m_Commander)
+            if (Consoler.Instance.Commander)
             {
                 SetupConsoleInput();
 
@@ -36,45 +32,44 @@ namespace ExpressoBits.Console.UI
                     if (!consoleInput.text.Contains("\n")) return;
                     var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
                     consoleInput.text = text;
-                    m_Commander.ProcessCommand(text);
+                    Consoler.Instance.Commander.ProcessCommand(text);
                 });
 
                 consoleInput.GetComponentInChildren<Text>().font = font;
 
                 consoleInput.gameObject.SetActive(false);
             
-                m_Commander.onCloseCommander.AddListener(delegate {
+                Consoler.Instance.Commander.onCloseCommander.AddListener(delegate {
                     consoleInput.gameObject.SetActive(false);
                     //consoleInput.DeactivateInputField();
                 });
             
-                m_Commander.onOpenCommander.AddListener(delegate
+                Consoler.Instance.Commander.onOpenCommander.AddListener(delegate
                 {
                     consoleInput.gameObject.SetActive(true);
                     consoleInput.ActivateInputField();
                 });
             
-                m_Commander.onFinishProcessCommand.AddListener(delegate
+                Consoler.Instance.Commander.onFinishProcessCommand.AddListener(delegate
                 {
                     consoleInput.text = string.Empty;
                 });
             }
             
             // Check if logs exists
-            m_Logs = GetComponentInParent<Logs>();
-            if (m_Logs)
+            if (Consoler.Instance.Logs)
             {
                 SetupLogPanel();
 
-                if (m_Commander)
+                if (Consoler.Instance.Commander)
                 {
-                    m_Commander.onCloseCommander.AddListener(delegate
+                    Consoler.Instance.Commander.onCloseCommander.AddListener(delegate
                     {
                         m_LogPanel.logPanelScroll.SetActive(false);
                         m_LogPanel.logPanelToast.SetActive(true);
                     });
                 
-                    m_Commander.onOpenCommander.AddListener(delegate
+                    Consoler.Instance.Commander.onOpenCommander.AddListener(delegate
                     {
                         m_LogPanel.logPanelScroll.SetActive(true);
                         m_LogPanel.logPanelToast.SetActive(false);
@@ -140,16 +135,13 @@ namespace ExpressoBits.Console.UI
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
             toastLog.Setup(logText,font, timer, sprite, color);
-            
-            if (Consoler.Instance.Commander)
-            {
-                var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
-                if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
-                staticLog.Setup(logText, font, sprite, color);
-                return staticLog;
-            }
-            
-            return toastLog;
+
+            if (!Consoler.Instance.Commander) return toastLog;
+            var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
+            if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
+            staticLog.Setup(logText, font, sprite, color);
+            return staticLog;
+
         }
     }
 

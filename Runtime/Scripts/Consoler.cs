@@ -1,12 +1,17 @@
 ﻿using System;
+using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
+using UnityEngine;
 
 namespace ExpressoBits.Console
 {
+    [AddComponentMenu(menuName: "Console/Consoler")]
     public class Consoler : Singleton<Consoler>
     {
         private Commander m_Commander;
         private Logs m_Logs;
+
+        public VisualConsoler visualConsoler;
 
         public Commander Commander
         {

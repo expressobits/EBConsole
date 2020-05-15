@@ -20,19 +20,12 @@ namespace ExpressoBits.Console
         public LogAttribute helpLogAttribute;
         public LogAttribute successLogAttribute;
 
-        private VisualConsole m_VisualConsole;
         [Range(0,2048)]
         public int maxLogCount = 128;
 
-
-        private void Awake()
-        {
-            m_VisualConsole = GetComponentInChildren<VisualConsole>();
-        }
-        
         public void Log(string logText, float timer, Sprite sprite, Color color)
         {
-            var logMessage = m_VisualConsole.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
+            var logMessage = Consoler.Instance.visualConsoler.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
             if (!Consoler.Instance.Commander) return;
             messages.Enqueue(logMessage);
             if (messages.Count <= maxLogCount) return;

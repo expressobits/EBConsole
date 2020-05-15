@@ -1,5 +1,4 @@
-﻿using ExpressoBits.Console.UI;
-using ExpressoBits.Console.Utils;
+﻿using ExpressoBits.Console.Utils;
 using UnityEngine;
 
 namespace ExpressoBits.Console
@@ -15,14 +14,12 @@ namespace ExpressoBits.Console
 
         private int m_ActualIndex;
         private const int noValue = -1;
-        private VisualConsole m_VisualConsole;
         private const string saveHistoryKey = "br.com.ExpressoBits.Console.History";
         private Commander m_Commander;
 
         private void Awake()
         {
             m_Commander = GetComponent<Commander>();
-            m_VisualConsole = GetComponentInChildren<VisualConsole>();
             history = new CircularBuffer<string>(maxHistoryRegistry);
             LoadHistory();
         }
@@ -58,9 +55,9 @@ namespace ExpressoBits.Console
 
         private void AddLastCommand()
         {
-            if (m_VisualConsole.consoleInput.text.Length > 0)
+            if (Consoler.Instance.visualConsoler.consoleInput.text.Length > 0)
             {
-                history.Add(m_VisualConsole.consoleInput.text);
+                history.Add(Consoler.Instance.visualConsoler.consoleInput.text);
 
             }
 
@@ -74,8 +71,8 @@ namespace ExpressoBits.Console
                 if (history.Count == 0) return;
                 m_ActualIndex++;
                 if (m_ActualIndex == history.Count) m_ActualIndex = 0;
-                m_VisualConsole.consoleInput.text = history[m_ActualIndex];
-                m_VisualConsole.consoleInput.caretPosition = m_VisualConsole.consoleInput.text.Length;
+                Consoler.Instance.visualConsoler.consoleInput.text = history[m_ActualIndex];
+                Consoler.Instance.visualConsoler.consoleInput.caretPosition = Consoler.Instance.visualConsoler.consoleInput.text.Length;
             }
 
             else if (Input.GetKeyDown(upKeyCode))
@@ -85,15 +82,15 @@ namespace ExpressoBits.Console
                 switch (m_ActualIndex)
                 {
                     case noValue:
-                        m_VisualConsole.consoleInput.text = "";
+                        Consoler.Instance.visualConsoler.consoleInput.text = "";
                         return;
                     case -2:
                         m_ActualIndex = history.Count - 1;
                         break;
                 }
 
-                m_VisualConsole.consoleInput.text = history[m_ActualIndex];
-                m_VisualConsole.consoleInput.caretPosition = m_VisualConsole.consoleInput.text.Length;
+                Consoler.Instance.visualConsoler.consoleInput.text = history[m_ActualIndex];
+                Consoler.Instance.visualConsoler.consoleInput.caretPosition = Consoler.Instance.visualConsoler.consoleInput.text.Length;
             }
         }
 
