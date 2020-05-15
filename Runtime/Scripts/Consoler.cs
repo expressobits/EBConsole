@@ -1,4 +1,5 @@
 ﻿using System;
+using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
@@ -7,6 +8,8 @@ namespace ExpressoBits.Console
     {
         private Commander m_Commander;
         private Logs m_Logs;
+
+        public VisualConsoler visualConsoler;
 
         public Commander Commander
         {
