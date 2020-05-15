@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ExpressoBits.Console.UI;
-using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {

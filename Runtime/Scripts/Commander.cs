@@ -2,7 +2,6 @@
 using UnityEngine;
 using ExpressoBits.Console.Commands;
 using UnityEngine.Events;
-using ExpressoBits.Console.Utils;
 
 namespace ExpressoBits.Console
 {

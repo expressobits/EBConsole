@@ -157,4 +157,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upKeyCode: 273
   downKeyCode: 274
-  maxHistoryRegistry: 256
+  maxHistoryRegistry: 32

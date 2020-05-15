@@ -8,7 +8,9 @@ namespace ExpressoBits.Console.Utils
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         // Check to see if we're about to be destroyed.
-        private static bool _shuttingDown = false;
+        // ReSharper disable once StaticMemberInGenericType
+        private static bool _shuttingDown;
+        // ReSharper disable once StaticMemberInGenericType
         private static object m_Lock = new object();
         private static T _instance;
 

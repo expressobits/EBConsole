@@ -9,12 +9,12 @@ public class AddNewCommandTest : MonoBehaviour
     private void Start()
     {
         if(Consoler.Instance.Commander != null)
-        Consoler.Instance.Commander.AddCommand("test", delegate { Command("Testing add command in runtime! "); });
+            Consoler.Instance.Commander.AddCommand("test", delegate { Command("Testing add command in runtime! "); });
     }
 
     public void Command(string test)
     {
         if(Consoler.Instance.Commander != null)
-        Consoler.Instance.Logs.Log(test,10f,spriteTest,Color.cyan);
+            Consoler.Instance.Logs.Log(test,10f,spriteTest,Color.cyan);
     }
 }
