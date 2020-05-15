@@ -1,4 +1,4 @@
-﻿using ExpressoBits.Console.UI;
+using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 using UnityEngine;
 
