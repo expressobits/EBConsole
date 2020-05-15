@@ -81,6 +81,9 @@ and also manages keyboard entries to navigate between the history (by default up
 
 ### ![Visual Consoler](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/VisualConsoler.png) Visual Consoler
 
+Here what interface magic happens, where you can modify how you can visually represent the console!
+> Note:This component must be placed as a child of some visual resource such as a Canvas, Panel.
+
 ### Sample commands
 
 | Command  |  Description |
