@@ -14,8 +14,8 @@ namespace Runtime.Scripts.Commands
 
         public override bool Process(string[] args)
         {
-            var history = Commander.Instance.GetComponent<History>();
-            var logs = Commander.Instance.GetComponent<Logs>();
+            var history = Consoler.Instance.GetComponent<History>();
+            var logs = Consoler.Instance.Logs;
             if (!history || !logs) return false;
             if (history.history.Count <= 0) return false;
 

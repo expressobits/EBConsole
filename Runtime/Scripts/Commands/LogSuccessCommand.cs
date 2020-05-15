@@ -18,7 +18,7 @@ namespace ExpressoBits.Console.Commands
             if (logText.Length <= 0) return false;
 
             Debug.LogWarning(logText);
-            if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogSuccess(logText);
+            if (Consoler.Instance.Logs != null) Consoler.Instance.Logs.LogSuccess(logText);
 
             return true;
         }

@@ -6,11 +6,9 @@ using ExpressoBits.Console.Utils;
 namespace ExpressoBits.Console
 {
     [AddComponentMenu(menuName:"Console/Logs")]
-    [RequireComponent(typeof(Commander))]
-    public class Logs : Singleton<Logs>
+    [RequireComponent(typeof(Consoler))]
+    public class Logs : MonoBehaviour
     {
-        
-
         public Queue<LogMessage> messages = new Queue<LogMessage>();
 
         public float defaultTimer = 8f;
@@ -35,10 +33,12 @@ namespace ExpressoBits.Console
         public void Log(string logText, float timer, Sprite sprite, Color color)
         {
             var logMessage = m_VisualConsole.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
+            if (!Consoler.Instance.Commander) return;
             messages.Enqueue(logMessage);
             if (messages.Count <= maxLogCount) return;
             var e = messages.Dequeue();
             Destroy(e.gameObject);
+
         }
         
         public void Log(string logText, float timer, LogAttribute logAttribute)

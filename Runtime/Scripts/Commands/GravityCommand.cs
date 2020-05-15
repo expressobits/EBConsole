@@ -28,8 +28,8 @@ namespace ExpressoBits.Console.Commands
                     return false;
                 }
                 Physics.gravity = new Vector3(x, y, z);
-                if (Commander.Instance.GetComponent<Logs>() != null)
-                    Logs.Instance.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
+                if (Consoler.Instance.Logs.GetComponent<Logs>() != null)
+                    Consoler.Instance.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
                 return true;
             }
 
@@ -40,8 +40,8 @@ namespace ExpressoBits.Console.Commands
                     return false;
                 }
                 Physics.gravity = new Vector3(Physics.gravity.x, value, Physics.gravity.z);
-                if (Commander.Instance.GetComponent<Logs>() != null)
-                    Logs.Instance.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
+                if (Consoler.Instance.Logs.GetComponent<Logs>() != null)
+                    Consoler.Instance.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
                 return true;
             }
 
@@ -49,8 +49,8 @@ namespace ExpressoBits.Console.Commands
 
             // Debug.LogWarning(logText);
             // 
-            if (Commander.Instance.GetComponent<Logs>() != null)
-                Logs.Instance.LogWarn("Gravity command need 3 or 1 argument number!");
+            if (Consoler.Instance.Logs.GetComponent<Logs>() != null)
+                Consoler.Instance.Logs.LogWarn("Gravity command need 3 or 1 argument number!");
             return false;
         }
     }

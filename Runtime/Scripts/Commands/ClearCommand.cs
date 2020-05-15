@@ -14,8 +14,8 @@ namespace ExpressoBits.Console.Commands
         public override bool Process(string[] args)
         {
 
-            if (Commander.Instance.GetComponent<Logs>() != null)
-                Logs.Instance.Clear();
+            if (Consoler.Instance.Logs != null)
+                Consoler.Instance.Logs.Clear();
             return true;
         }
     }

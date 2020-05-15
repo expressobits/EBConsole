@@ -8,11 +8,13 @@ public class AddNewCommandTest : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        Commander.Instance.AddCommand("test", delegate { Command("Testing add command in runtime! "); });
+        if(Consoler.Instance.Commander != null)
+        Consoler.Instance.Commander.AddCommand("test", delegate { Command("Testing add command in runtime! "); });
     }
 
     public void Command(string test)
     {
-        Logs.Instance.Log(test,10f,spriteTest,Color.cyan);
+        if(Consoler.Instance.Commander != null)
+        Consoler.Instance.Logs.Log(test,10f,spriteTest,Color.cyan);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,61 +23,70 @@ namespace ExpressoBits.Console.UI
         public InputField consoleInput;
         
         private LogPanel m_LogPanel;
-    
-        public int logTextWidth = 100;
 
         private void Awake()
         {
             m_Commander = GetComponentInParent<Commander>();
-            
-
-            SetupConsoleInput();
-
-            consoleInput.onValueChanged.AddListener(delegate
+            if (m_Commander)
             {
-                if (!consoleInput.text.Contains("\n")) return;
-                var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
-                consoleInput.text = text;
-                m_Commander.ProcessCommand(text);
-            });
+                SetupConsoleInput();
 
-            consoleInput.GetComponentInChildren<Text>().font = font;
+                consoleInput.onValueChanged.AddListener(delegate
+                {
+                    if (!consoleInput.text.Contains("\n")) return;
+                    var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
+                    consoleInput.text = text;
+                    m_Commander.ProcessCommand(text);
+                });
 
-            consoleInput.gameObject.SetActive(false);
-            
-            m_Commander.onCloseCommander.AddListener(delegate {
+                consoleInput.GetComponentInChildren<Text>().font = font;
+
                 consoleInput.gameObject.SetActive(false);
-                //consoleInput.DeactivateInputField();
-            });
             
-            m_Commander.onOpenCommander.AddListener(delegate
-            {
-                consoleInput.gameObject.SetActive(true);
-                consoleInput.ActivateInputField();
-            });
+                m_Commander.onCloseCommander.AddListener(delegate {
+                    consoleInput.gameObject.SetActive(false);
+                    //consoleInput.DeactivateInputField();
+                });
             
-            m_Commander.onFinishProcessCommand.AddListener(delegate
-            {
-                consoleInput.text = string.Empty;
-            });
-    
+                m_Commander.onOpenCommander.AddListener(delegate
+                {
+                    consoleInput.gameObject.SetActive(true);
+                    consoleInput.ActivateInputField();
+                });
+            
+                m_Commander.onFinishProcessCommand.AddListener(delegate
+                {
+                    consoleInput.text = string.Empty;
+                });
+            }
+            
             // Check if logs exists
             m_Logs = GetComponentInParent<Logs>();
             if (m_Logs)
             {
                 SetupLogPanel();
 
-                m_Commander.onCloseCommander.AddListener(delegate
+                if (m_Commander)
+                {
+                    m_Commander.onCloseCommander.AddListener(delegate
+                    {
+                        m_LogPanel.logPanelScroll.SetActive(false);
+                        m_LogPanel.logPanelToast.SetActive(true);
+                    });
+                
+                    m_Commander.onOpenCommander.AddListener(delegate
+                    {
+                        m_LogPanel.logPanelScroll.SetActive(true);
+                        m_LogPanel.logPanelToast.SetActive(false);
+                    });
+                }
+                else
                 {
                     m_LogPanel.logPanelScroll.SetActive(false);
                     m_LogPanel.logPanelToast.SetActive(true);
-                });
+                }
+
                 
-                m_Commander.onOpenCommander.AddListener(delegate
-                {
-                    m_LogPanel.logPanelScroll.SetActive(true);
-                    m_LogPanel.logPanelToast.SetActive(false);
-                });
             }
 
         }
@@ -129,14 +136,19 @@ namespace ExpressoBits.Console.UI
 
         public LogMessage InstantiateLogsAndReturnToastLog(string logText,float timer, Sprite sprite, Color color)
         {
-            var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
-            if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
-            staticLog.Setup(logText,font, timer, sprite, color);
             
-            var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
+            var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
-            toastLog.Setup(logText, font, sprite, color);
-
+            toastLog.Setup(logText,font, timer, sprite, color);
+            
+            if (Consoler.Instance.Commander)
+            {
+                var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
+                if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
+                staticLog.Setup(logText, font, sprite, color);
+                return staticLog;
+            }
+            
             return toastLog;
         }
     }

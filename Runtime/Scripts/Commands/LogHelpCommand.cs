@@ -17,17 +17,17 @@ namespace ExpressoBits.Console.Commands
 
             if (logText.Length <= 0)
             {
-                if (Commander.Instance.GetComponent<Logs>() == null) return false;
-                foreach (ICommand command in Commander.Instance.commands)
+                if (Consoler.Instance.Logs == null) return false;
+                foreach (ICommand command in Consoler.Instance.Commander.commands)
                 {
-                    Logs.Instance.LogHelp("/" + command.CommandWord);
+                    Consoler.Instance.Logs.LogHelp("/" + command.CommandWord);
                 }
-                Logs.Instance.LogHelp("--- All Valid Commands ---");
+                Consoler.Instance.Logs.LogHelp("--- All Valid Commands ---");
                 return true;
             }
 
             Debug.Log(logText);
-            if (Commander.Instance.GetComponent<Logs>() != null) Logs.Instance.LogHelp(logText);
+            if (Consoler.Instance.Logs != null) Consoler.Instance.Logs.LogHelp(logText);
 
             return true;
         }
