@@ -23,6 +23,7 @@ namespace ExpressoBits.Console.UI
 
         private void Awake()
         {
+            Consoler.Instance.visualConsoler = this;
             if (Consoler.Instance.Commander)
             {
                 SetupConsoleInput();

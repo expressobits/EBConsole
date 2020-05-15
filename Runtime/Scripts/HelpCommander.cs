@@ -23,6 +23,7 @@ namespace ExpressoBits.Console
         {
             m_Commander = GetComponent<Commander>();
             m_Logs = GetComponent<Logs>();
+            
         }
 
         private void Start()

@@ -1,5 +1,4 @@
-﻿using System;
-using ExpressoBits.Console.UI;
+﻿using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 using UnityEngine;
 
@@ -34,6 +33,15 @@ namespace ExpressoBits.Console
         {
             m_Commander = GetComponent<Commander>();
             m_Logs = GetComponent<Logs>();
+            
+        }
+
+        private void Start()
+        {
+            if (!visualConsoler)
+            {
+                Debug.LogError("An object with a visual consoler is missing in the scene!");
+            }
         }
     }
 }
