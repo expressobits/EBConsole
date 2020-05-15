@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +25,8 @@ namespace ExpressoBits.Console.UI
         public InputField consoleInput;
         
         private LogPanel m_LogPanel;
+    
+        public int logTextWidth = 100;
 
         private void Awake()
         {

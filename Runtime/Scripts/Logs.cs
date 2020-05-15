@@ -103,9 +103,9 @@ namespace ExpressoBits.Console
          */
         public void Clear()
         {
-            for (int i = messages.Count - 1; i >= 0; i--)
+            for (var i = messages.Count - 1; i >= 0; i--)
             {
-                LogMessage e = messages.Dequeue();
+                var e = messages.Dequeue();
                 Destroy(e.gameObject);
             }
         }
