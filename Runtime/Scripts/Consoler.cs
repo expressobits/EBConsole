@@ -9,13 +9,15 @@ namespace ExpressoBits.Console
     {
         private Commander m_Commander;
         private Logs m_Logs;
-
+        
+        [HideInInspector]
         public VisualConsoler visualConsoler;
 
         public Commander Commander
         {
             get
             {
+                if (!m_Commander) m_Commander = GetComponent<Commander>();
                 return m_Commander;
             }
         }
@@ -24,6 +26,7 @@ namespace ExpressoBits.Console
         {
             get
             {
+                if (!m_Logs) m_Logs = GetComponent<Logs>();
                 return m_Logs;
             }
         }

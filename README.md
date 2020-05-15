@@ -28,7 +28,7 @@ For it to work correctly, an EventSystem is needed in your scene.
 The main component of the console system. The component is basically a utility for calling Singleton Commander and 
 Log methods.Just add the components you want for a console of your taste!
 
-### ![Commander](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/Commander.png) Commander component
+### ![Commander](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/commander.png) Commander component
 
 This component creates a visual bar for typing commands, it can be opened and closed using the ToggleCommander component or directly via code.
 You can create custom commands by extending the <i>ConsoleCommand</i> class for add in commander component. 
@@ -72,7 +72,7 @@ By default the component added to the prefab called <i>ToggleCommander</i> opens
 
 Prints help messages to open the console, to close and the console version.
 
-### ![History](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/History.png) History component
+### ![History](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/history.png) History component
 
 ![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/history.gif)
 

@@ -87,6 +87,7 @@ namespace ExpressoBits.Console.UI
 
         }
 
+
         private void SetupLogPanel()
         {
             m_LogPanel = Instantiate(messagePanel, transform);
