@@ -84,6 +84,10 @@ and also manages keyboard entries to navigate between the history (by default up
 Here what interface magic happens, where you can modify how you can visually represent the console!
 > Note:This component must be placed as a child of some visual resource such as a Canvas, Panel.
 
+### ![Theme](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/Theme.png) Theme
+
+By default the comforting look comes with the <i>Pixel</i> theme, but can be modified to another customized theme. Just add it via the <i>Expresso Bits > Console > Theme</i> menu.
+
 ### Sample commands
 
 | Command  |  Description |

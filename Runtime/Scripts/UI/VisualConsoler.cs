@@ -8,13 +8,14 @@ namespace ExpressoBits.Console.UI
     public class VisualConsoler : MonoBehaviour
     {
         public ConsoleAlign align;
+        public Theme theme;
         
         [Header("UI Prefabs")]
         public InputField consoleInputPrefab;
         public LogPanel messagePanel;
         public LogMessage uiLogPrefab;
 
-        public Font font;
+        
         
         [HideInInspector]
         public InputField consoleInput;
@@ -36,7 +37,7 @@ namespace ExpressoBits.Console.UI
                     Consoler.Instance.Commander.ProcessCommand(text);
                 });
 
-                consoleInput.GetComponentInChildren<Text>().font = font;
+                consoleInput.GetComponentInChildren<Text>().font = theme.font;
 
                 consoleInput.gameObject.SetActive(false);
             
@@ -136,12 +137,12 @@ namespace ExpressoBits.Console.UI
             
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
-            toastLog.Setup(logText,font, timer, sprite, color);
+            toastLog.Setup(logText,theme.font, timer, sprite, color);
 
             if (!Consoler.Instance.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
-            staticLog.Setup(logText, font, sprite, color);
+            staticLog.Setup(logText, theme.font, sprite, color);
             return staticLog;
 
         }
