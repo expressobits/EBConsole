@@ -20,7 +20,6 @@ namespace ExpressoBits.Console
 
         [SerializeField] private ConsoleCommand commandWithoutPrefix;
 
-
         [Header("Events")]
         public UnityEvent onCloseCommander;
         public UnityEvent onOpenCommander;
@@ -51,32 +50,22 @@ namespace ExpressoBits.Console
             CloseCommander();
         }
 
-
         #region Open/Close
+        // Close commander
         public void CloseCommander()
         {
             m_ActiveInput = false;
             onCloseCommander.Invoke();
         }
 
+        // Open commander
         public void OpenCommander()
         {
             m_ActiveInput = true;
             onOpenCommander.Invoke();
         }
 
-        #endregion
-
-        public void ProcessCommand(string inputValue)
-        {
-
-            DeveloperConsole.ProcessCommand(inputValue);
-            onProcessCommand.Invoke();
-            onFinishProcessCommand.Invoke();
-
-        }
-
-
+        // Enable/disable commander
         public void Toggle()
         {
             if (m_ActiveInput)
@@ -89,17 +78,32 @@ namespace ExpressoBits.Console
             }
         }
 
-        // Adiciona comando criado em tempo de execução, basta criar um com
+        #endregion
+
+        #region Command actions
+        // Process command per string input
+        public void ProcessCommand(string inputValue)
+        {
+
+            DeveloperConsole.ProcessCommand(inputValue);
+            onProcessCommand.Invoke();
+            onFinishProcessCommand.Invoke();
+
+        }
+
+        // Add command create in runtime, create new command with
         // <code>new Command("test",delegate{ Test(); })</code>
         public void AddCommand(Command command)
         {
             commands.Add(command);
         }
 
+        // Add command create in runtime with action
         public void AddCommand(string commandWord, UnityAction action)
         {
             commands.Add(new Command(commandWord,action));
         }
+        #endregion
 
     }
 
