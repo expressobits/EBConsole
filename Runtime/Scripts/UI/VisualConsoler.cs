@@ -8,13 +8,14 @@ namespace ExpressoBits.Console.UI
     public class VisualConsoler : MonoBehaviour
     {
         public ConsoleAlign align;
+        public Theme theme;
         
         [Header("UI Prefabs")]
         public InputField consoleInputPrefab;
         public LogPanel messagePanel;
         public InfoMessage uiLogPrefab;
 
-        public Font font;
+        
         
         [HideInInspector]
         public InputField consoleInput;
@@ -36,7 +37,7 @@ namespace ExpressoBits.Console.UI
                     Consoler.Instance.Commander.ProcessCommand(text);
                 });
 
-                consoleInput.GetComponentInChildren<Text>().font = font;
+                consoleInput.GetComponentInChildren<Text>().font = theme.font;
 
                 consoleInput.gameObject.SetActive(false);
             

@@ -12,13 +12,6 @@ namespace ExpressoBits.Console
 
         public float defaultTimer = 8f;
         
-        [Header("Log Attributes")]
-        public LogAttribute defaultLogAttribute;
-        public LogAttribute warnLogAttribute;
-        public LogAttribute errorLogAttribute;
-        public LogAttribute helpLogAttribute;
-        public LogAttribute successLogAttribute;
-
         [Range(0,2048)]
         public int maxLogCount = 128;
 
@@ -77,27 +70,27 @@ namespace ExpressoBits.Console
 
         public void Log(string logText, float timer)
         {
-            Log(logText, timer, defaultLogAttribute);
+            Log(logText, timer, Consoler.Instance.visualConsoler.theme.defaultLogAttribute);
         }
 
         public void LogWarn(string logText, float timer)
         {
-            Log(logText, timer, warnLogAttribute);
+            Log(logText, timer, Consoler.Instance.visualConsoler.theme.warnLogAttribute);
         }
 
         public void LogError(string logText, float timer)
         {
-            Log(logText, timer,errorLogAttribute );
+            Log(logText, timer,Consoler.Instance.visualConsoler.theme.errorLogAttribute );
         }
 
         public void LogHelp(string logText, float timer)
         {
-            Log(logText, timer,helpLogAttribute);
+            Log(logText, timer,Consoler.Instance.visualConsoler.theme.helpLogAttribute);
         }
 
         public void LogSuccess(string logText, float timer)
         {
-            Log(logText, timer, successLogAttribute);
+            Log(logText, timer, Consoler.Instance.visualConsoler.theme.successLogAttribute);
         }
 
         /**

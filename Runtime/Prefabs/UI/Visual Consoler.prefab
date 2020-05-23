@@ -62,5 +62,5 @@ MonoBehaviour:
     type: 3}
   messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
   uiLogPrefab: {fileID: 573168610, guid: b76fd55d7c9051d4698ed7b21ee73940, type: 3}
-  font: {fileID: 12800000, guid: cd54ed392bb47b846ba7a5c0ba5a1891, type: 3}
+  theme: {fileID: 11400000, guid: 5804f23bc608d354a876127188f00fb1, type: 2}
   consoleInput: {fileID: 0}
