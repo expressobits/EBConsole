@@ -12,7 +12,7 @@ namespace ExpressoBits.Console.UI
         [Header("UI Prefabs")]
         public InputField consoleInputPrefab;
         public LogPanel messagePanel;
-        public LogMessage uiLogPrefab;
+        public InfoMessage uiLogPrefab;
 
         public Font font;
         
@@ -131,17 +131,17 @@ namespace ExpressoBits.Console.UI
             return consoleInput.gameObject.activeSelf;
         }
 
-        public LogMessage InstantiateLogsAndReturnToastLog(string logText,float timer, Sprite sprite, Color color)
+        public InfoMessage InstantiateLogsAndReturnToastLog(Info info,float timer)
         {
-            
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
-            toastLog.Setup(logText,font, timer, sprite, color);
+            
+            toastLog.Setup(info,timer);
 
             if (!Consoler.Instance.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
-            staticLog.Setup(logText, font, sprite, color);
+            staticLog.Setup(info);
             return staticLog;
 
         }

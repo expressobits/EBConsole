@@ -4,8 +4,8 @@ namespace ExpressoBits.Console.Commands
 {
     public class Command : ICommand
     {
-        private string m_CommandWord;
-        private UnityAction m_Action;
+        private readonly string m_CommandWord;
+        private readonly UnityAction m_Action;
 
         public string CommandWord => m_CommandWord;
 

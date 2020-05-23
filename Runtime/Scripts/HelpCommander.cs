@@ -15,8 +15,6 @@ namespace ExpressoBits.Console
 
         private Commander m_Commander;
         private Logs m_Logs;
-        private ToggleCommander m_ToggleCommander;
-
         private UnityAction m_Open;
 
         private void Awake()

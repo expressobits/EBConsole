@@ -11,14 +11,13 @@ namespace ExpressoBits.Console
     {
 
         [Header("General Settings")]
-        [SerializeField]
-        private string prefix = string.Empty;
+        public string prefix = string.Empty;
 
         [Header("List of valid Static commands")]
         public ConsoleCommand[] staticCommands;
         public List<ICommand> commands = new List<ICommand>();
 
-        [SerializeField] private ConsoleCommand commandWithoutPrefix;
+        public ConsoleCommand commandWithoutPrefix;
 
 
         [Header("Events")]
@@ -91,7 +90,7 @@ namespace ExpressoBits.Console
 
         // Adiciona comando criado em tempo de execução, basta criar um com
         // <code>new Command("test",delegate{ Test(); })</code>
-        public void AddCommand(Command command)
+        public void AddCommand(ICommand command)
         {
             commands.Add(command);
         }

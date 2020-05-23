@@ -101,19 +101,19 @@ MonoBehaviour:
   defaultTimer: 8
   defaultLogAttribute:
     icon: {fileID: 21300000, guid: 23efc584638783b43b82e3af26c47d38, type: 3}
-    backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0.5019608}
   warnLogAttribute:
     icon: {fileID: 21300000, guid: fb3335b36af314a46bbb493fc965d71a, type: 3}
-    backgroundColor: {r: 0.7529412, g: 0.7529412, b: 0, a: 1}
+    backgroundColor: {r: 0.7529412, g: 0.7529412, b: 0, a: 0.5019608}
   errorLogAttribute:
     icon: {fileID: 21300000, guid: 5da0cee05ea18c54db84bf4c33fc87a1, type: 3}
-    backgroundColor: {r: 0.7529412, g: 0, b: 0, a: 1}
+    backgroundColor: {r: 0.7529412, g: 0, b: 0, a: 0.5019608}
   helpLogAttribute:
     icon: {fileID: 21300000, guid: 2968f5c9fbf484a48886138fc58e9c5c, type: 3}
     backgroundColor: {r: 0, g: 0, b: 0.7529412, a: 1}
   successLogAttribute:
     icon: {fileID: 21300000, guid: b2c2cf9f2b0907d49a56b232cab2ba4d, type: 3}
-    backgroundColor: {r: 0, g: 0.7529412, b: 0, a: 1}
+    backgroundColor: {r: 0, g: 0.7529412, b: 0, a: 0.5019608}
   maxLogCount: 128
 --- !u!114 &4474387821887415922
 MonoBehaviour:

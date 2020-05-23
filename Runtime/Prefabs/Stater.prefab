@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &712278139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712278141}
+  - component: {fileID: 712278140}
+  - component: {fileID: 1843958722}
+  - component: {fileID: 1843958723}
+  m_Layer: 0
+  m_Name: FPS Stat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &712278141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712278139}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 225.23952, y: 471.21176, z: -359.20227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6693355490592070712}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712278140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712278139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6f6b5f89b83e344a0cb4140d9d5821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startShow: 1
+  color: {r: 0, g: 1, b: 0.11850667, a: 1}
+  ArgumentName: fps
+  UpdateInterval: 0.5
+  fpsIcon: {fileID: 21300000, guid: 98eec07ae1685494fa0a798b93323fa5, type: 3}
+  msIcon: {fileID: 21300000, guid: 04a14eec59732d04bba3b2781a1b381a, type: 3}
+--- !u!114 &1843958722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712278139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66e2c1999fbc2f4f83e1b9f177e706e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startShow: 1
+  color: {r: 0, g: 1, b: 0.11023998, a: 1}
+  ArgumentName: memory
+  ramIcon: {fileID: 21300000, guid: 901b98b5635b1c2408f6f4d99c6925a5, type: 3}
+  vRamIcon: {fileID: 21300000, guid: 9d26b10a22e755848b9f484def59de10, type: 3}
+--- !u!114 &1843958723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712278139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c927e6b8bca654fb08ca8b4830dc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startShow: 1
+  color: {r: 1, g: 0.99247026, b: 0, a: 1}
+  ArgumentName: system
+  graphicIcon: {fileID: 21300000, guid: e11196cdc6673e249832efdfad4dd447, type: 3}
+--- !u!1 &6693355490592070695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6693355490592070712}
+  - component: {fileID: 6693355490592070713}
+  m_Layer: 0
+  m_Name: Stater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6693355490592070712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693355490592070695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9497144, y: -4.5298076, z: -4.5599537}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 712278141}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6693355490592070713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693355490592070695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bf798056610f345997390a8ab27f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualStater: {fileID: 0}
