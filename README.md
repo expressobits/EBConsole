@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
-![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo3.gif)
+![Demo4](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo4.gif)
 
 ## Features
 
@@ -50,6 +50,8 @@ You can create custom commands by extending the <i>ConsoleCommand</i> class for 
 Then just add the command's scriptable object to the <i>Commander</i> component.
 
 ### ![Logs](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/Logs.png) Logs component
+
+![Demo3](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo3.gif)
 
 Component that displays responses from the console, when added creates a new visual component that allows displaying logs in toasts (when the commander is closed) and persistent logs until the defined limit is exceeded (this is displayed when the commander is open).
 
@@ -122,6 +124,8 @@ Please let me know some command ideas to be added here, use the [issues page](ht
 
 
 ### ![Stater](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/Stater.png) Stater
+
+![Stater](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Stats.png)
 
 This component other is used alone, it is used to add power feature display messages that stay somewhere on the screen with status function . A good example is the use of fps (Frames per second) status that is used by a prefab with the Stater component.
 
