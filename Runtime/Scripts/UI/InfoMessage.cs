@@ -24,7 +24,7 @@ namespace ExpressoBits.Console.UI
 
         private void Start()
         {
-            text.font = Consoler.Instance.visualConsoler.font;
+            text.font = Consoler.Instance.visualConsoler.theme.font;
             image.sprite = _info.logAttribute.icon;
             background.color = _info.logAttribute.backgroundColor;
             UpdateContent();
