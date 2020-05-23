@@ -15,8 +15,6 @@ namespace ExpressoBits.Console
 
         private Commander m_Commander;
         private Logs m_Logs;
-        private ToggleCommander m_ToggleCommander;
-
         private UnityAction m_Open;
 
         private void Awake()
@@ -30,7 +28,7 @@ namespace ExpressoBits.Console
         {
             if (!m_Logs) return;
             //NOTE get package version?
-            Consoler.Instance.Logs.Log("Expresso Bits Console <color=red>v0.8.5</color>", 3f);
+            Consoler.Instance.Logs.Log("Expresso Bits Console <color=red>v0.9.0</color>", 3f);
 
             Consoler.Instance.Logs.LogHelp(helpTextToOpen);
 

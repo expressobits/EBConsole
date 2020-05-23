@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: FPS Stat
+  m_EditorClassIdentifier: EBConsole:ExpressoBits.Console.Stats:FPSStat
+  info:
+    content: FPS 1
+    logAttribute:
+      icon: {fileID: 21300000, guid: 5da0cee05ea18c54db84bf4c33fc87a1, type: 3}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}

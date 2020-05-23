@@ -8,7 +8,7 @@ namespace ExpressoBits.Console
     [RequireComponent(typeof(Consoler))]
     public class Logs : MonoBehaviour
     {
-        public Queue<LogMessage> messages = new Queue<LogMessage>();
+        public Queue<InfoMessage> messages = new Queue<InfoMessage>();
 
         public float defaultTimer = 8f;
         
@@ -22,9 +22,9 @@ namespace ExpressoBits.Console
         [Range(0,2048)]
         public int maxLogCount = 128;
 
-        public void Log(string logText, float timer, Sprite sprite, Color color)
+        public void Log(Info info, float timer)
         {
-            var logMessage = Consoler.Instance.visualConsoler.InstantiateLogsAndReturnToastLog(logText, timer, sprite, color);
+            var logMessage = Consoler.Instance.visualConsoler.InstantiateLogsAndReturnToastLog(info, timer);
             if (!Consoler.Instance.Commander) return;
             messages.Enqueue(logMessage);
             if (messages.Count <= maxLogCount) return;
@@ -32,10 +32,20 @@ namespace ExpressoBits.Console
             Destroy(e.gameObject);
 
         }
+
+        // REVIEW - Problem with garbage, info and logattribute recreates
+        // Solution - Use pools
         
         public void Log(string logText, float timer, LogAttribute logAttribute)
         {
-            Log(logText, timer, logAttribute.icon, logAttribute.backgroundColor);
+            Info info = new Info(logText,logAttribute);
+            Log(info, timer);
+        }
+
+        public void Log(string logText, float timer, Sprite icon, Color backgroundColor)
+        {
+            LogAttribute logAttribute = new LogAttribute(icon, backgroundColor);
+            Log(logText, timer, logAttribute);
         }
 
 

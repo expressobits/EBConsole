@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 391.49997, y: 0}
-  m_SizeDelta: {x: 734.99994, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &757982824
 CanvasRenderer:
@@ -79,7 +79,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: dsadasdsadsadsddsadsadsadsadasdsadsadsadsadsadsadasdsadsadsadasdasdsadsadsadasdsadsadsadasdasdsadsadsadsadsadsadsadsadsadsadsadsadasdsadsdadsa
+  m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque congue
+    purus a ipsum fringilla, nec dapibus nunc elementum. Sed sagittis sem eget tellus
+    laoreet, vel ultricies tortor cursus. Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Donec sit amet hendrerit odio, id bibendum justo. Morbi viverra
+    posuere libero, in fringilla diam facilisis sit amet. Pellentesque a nibh convallis,
+    pulvinar felis eget, euismod dolor. Integer auctor diam risus, in malesuada justo
+    pretium eget. Praesent non dui a eros tempus ultrices id eu elit. Etiam rhoncus
+    velit ac suscipit tincidunt. Vestibulum lobortis, sem ut maximus pretium, ante
+    diam accumsan mauris, at varius sapien arcu id sem. Phasellus id ipsum tellus.
+    Fusce efficitur nunc a nulla venenatis, nec tempus purus finibus. Nam dictum
+    a mauris at posuere.
 --- !u!114 &2314135456845735674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +235,7 @@ GameObject:
   - component: {fileID: 1480806806406614632}
   - component: {fileID: -6752008559862632539}
   m_Layer: 0
-  m_Name: Log
+  m_Name: Info Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,12 +279,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8909799056211729578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 818a2862fcb1ccd4e9ee292b6aaddecb, type: 3}
+  m_Script: {fileID: 11500000, guid: 67488b7a552298743a869b56f2ff6e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 757982823}
   image: {fileID: 5614667450057269899}
   background: {fileID: -6752008559862632539}
+  _info:
+    content: 
+    logAttribute:
+      icon: {fileID: 0}
+      backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    isUpdate: 0
 --- !u!95 &6990026841561213547
 Animator:
   serializedVersion: 3
@@ -347,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

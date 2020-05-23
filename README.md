@@ -1,10 +1,25 @@
 # Welcome to Expresso Bits Console 👋
-![Version](https://img.shields.io/badge/version-0.8.5-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.9.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](todo-doc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
 ![Demo2](https://raw.githubusercontent.com/wiki/ExpressoBits/EBConsole/Demo3.gif)
+
+## Features
+
+✔️ Commands with easy access.
+
+✔️ Persistent logs in the form of toasts.
+
+✔️ Command history.
+
+✔️ Commands pre-established or added at run time.
+
+🔨 Easy change of themes and visual by having separate interface and logic codes.
+
+✔️ Adding status messages (Example: FPS)
+
 
 ## Install
 
@@ -100,6 +115,20 @@ Here what interface magic happens, where you can modify how you can visually rep
 | /help | ... |
 
 Please let me know some command ideas to be added here, use the [issues page](https://github.com/ExpressoBits/EBConsole/issues) for that!
+
+
+### ![Stater](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/Stater.png) Stater
+
+This component other is used alone, it is used to add power feature display messages that stay somewhere on the screen with status function . A good example is the use of fps (Frames per second) status that is used by a prefab with the Stater component.
+
+At the moment it is extremely simple and should always be linked to a Visual Stater
+
+### ![Visual Stater](https://raw.githubusercontent.com/ExpressoBits/EBConsole/master/Editor/Textures/VisualStater.png) Visual Stater
+
+Just like Visual Consoler, it separates every visual part of the stater. Here can be defined a visual prefab that I have InfoMessage as a component.
+
+> Note: Can be modified to anywhere and corner of the screen the component.
+
 
 ## Authors
 
