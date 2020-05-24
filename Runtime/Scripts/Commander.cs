@@ -33,11 +33,11 @@ namespace ExpressoBits.Console
         {
             get
             {
+                if (m_DeveloperConsole != null) { return m_DeveloperConsole; }
                 foreach (var item in staticCommands)
                 {
                     commands.Add(item);
                 }
-                if (m_DeveloperConsole != null) { return m_DeveloperConsole; }
                 return m_DeveloperConsole = new DeveloperConsole(prefix, commands, commandWithoutPrefix);
             }
         }

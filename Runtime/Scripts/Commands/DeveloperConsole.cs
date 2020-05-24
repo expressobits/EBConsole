@@ -8,11 +8,11 @@ namespace ExpressoBits.Console
     public class DeveloperConsole
     {
         private readonly string m_Prefix;
-        private readonly IEnumerable<ICommand> m_Commands;
+        public List<ICommand> m_Commands;
 
         private readonly ICommand m_CommandWithoutPrefix;
 
-        public DeveloperConsole(string prefix, IEnumerable<ICommand> commands, ICommand commandWithoutPrefix)
+        public DeveloperConsole(string prefix, List<ICommand> commands, ICommand commandWithoutPrefix)
         {
             this.m_Prefix = prefix;
             this.m_Commands = commands;
@@ -58,6 +58,10 @@ namespace ExpressoBits.Console
                 if (command.Process(args))
                 {
                     return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
 
