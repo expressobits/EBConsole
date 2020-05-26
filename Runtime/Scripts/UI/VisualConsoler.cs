@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -134,16 +135,21 @@ namespace ExpressoBits.Console.UI
 
         public InfoMessage InstantiateLogsAndReturnToastLog(Info info,float timer)
         {
+
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
             
-            toastLog.Setup(info,timer);
-
+            toastLog.Setup(info,8f);
+            
             if (!Consoler.Instance.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
             staticLog.Setup(info);
+
+
             return staticLog;
+
+            
 
         }
     }
