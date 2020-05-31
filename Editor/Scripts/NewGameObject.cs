@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace ExpressoBits.Console
+namespace ExpressoBits.Console.Editor
 {
     public static class NewGameObject
     {

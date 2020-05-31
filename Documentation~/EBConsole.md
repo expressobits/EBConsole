@@ -1,0 +1,3 @@
+>>>
+EB Console documentation
+>>>

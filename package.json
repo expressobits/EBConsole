@@ -1,11 +1,12 @@
 {
-    "name": "br.com.expressobits.console",
+    "name": "br.com.expresso-bits.console",
     "displayName": "EB Console",
-    "version": "0.9.1",
+    "version": "1.0.0",
     "unity": "2019.3",
-    "description": "Console",
+    "description": "Free and customizable console in game for Unity",
+    "type": "module",
     "keywords": [
         "utility"
     ],
-    "category": "Unity"
+    "hideInEditor": false
 }

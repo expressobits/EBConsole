@@ -1,0 +1,11 @@
+{
+    "name": "ExpressoBits.Console.Tests",
+    "references": [
+        "ExpressoBits.Console"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

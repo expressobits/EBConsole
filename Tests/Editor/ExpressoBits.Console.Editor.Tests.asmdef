@@ -1,0 +1,14 @@
+{
+    "name": "ExpressoBits.Console.Editor.Tests",
+    "references": [
+        "ExpressoBits.Console.Editor",
+        "ExpressoBits.Console"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

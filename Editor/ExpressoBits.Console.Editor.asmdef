@@ -1,0 +1,10 @@
+{
+    "name": "ExpressoBits.Console.Editor",
+    "references": [
+      "ExpressoBits.Console"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
