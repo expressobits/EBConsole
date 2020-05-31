@@ -6,5 +6,19 @@
     "description": "Free and customizable console in game for Unity",
     "keywords": [
         "utility"
+    ],
+
+    "samples": [
+
+        {
+
+            "displayName": "Simple example",
+
+            "description": "Test scene for console utilities",
+
+            "path": "Samples~/SimpleExample"
+
+        }
+
     ]
 }

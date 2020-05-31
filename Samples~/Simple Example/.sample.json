@@ -1,0 +1,5 @@
+{
+    "displayName": "Example Console",
+    "description": "Test scene for console utilities",
+    "createSeparatePackage": true
+}
