@@ -23,22 +23,14 @@ namespace ExpressoBits.Console
         {
             if (!inputValue.StartsWith(m_Prefix))
             {
-                if (m_CommandWithoutPrefix == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return ProcessCommand(m_CommandWithoutPrefix.CommandWord, inputValue.Split(' '));
-                }
-
+                return m_CommandWithoutPrefix != null && ProcessCommand(m_CommandWithoutPrefix.CommandWord, inputValue.Split(' '));
             }
             else
             {
                 inputValue = inputValue.Remove(0, m_Prefix.Length);
-                string[] inputSplit = inputValue.Split(' ');
-                string commandInput = inputSplit[0];
-                string[] args = inputSplit.Skip(1).ToArray();
+                var inputSplit = inputValue.Split(' ');
+                var commandInput = inputSplit[0];
+                var args = inputSplit.Skip(1).ToArray();
                 return ProcessCommand(commandInput, args);
             }
         }

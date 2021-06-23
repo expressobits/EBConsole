@@ -1,15 +1,19 @@
 ﻿using ExpressoBits.Console;
 using UnityEngine;
 
-public class TestPrintLog : MonoBehaviour
+namespace ExpressoBits.Console
 {
-    public Sprite spriteTest;
-    
-    // Start is called before the first frame update
-    private void Start()
+    public class TestPrintLog : MonoBehaviour
     {
-        if(Consoler.Instance.Logs != null)
-            Consoler.Instance.Logs.Log("Testing log in runtime!",10f,spriteTest,Color.magenta);
-    }
+        public Sprite spriteTest;
+    
+        // Start is called before the first frame update
+        private void Start()
+        {
+            if(Consoler.Instance.Logs != null)
+                Consoler.Instance.Logs.Log("Testing log in runtime!",10f,spriteTest,Color.magenta);
+        }
 
+    }
 }
+

@@ -25,11 +25,11 @@ namespace ExpressoBits.Console.Stats
         private void Awake()
         {
             Stater = GetComponentInParent<Stater>();
-            _infoFPS = new Info("")
+            _infoFPS = new Info("",new LogAttribute(fpsIcon,Color.white))
             {
                 isUpdate = true
             };
-            _infoMS = new Info("")
+            _infoMS = new Info("",new LogAttribute(msIcon,Color.white))
             {
                 isUpdate = true
             };

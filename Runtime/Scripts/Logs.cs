@@ -9,31 +9,6 @@ namespace ExpressoBits.Console
     public class Logs : MonoBehaviour
     {
 
-        public enum LoggerType
-        {
-            Error,
-            /// <summary>
-            ///   <para>LogType used for Warnings.</para>
-            /// </summary>
-            Warning,
-            /// <summary>
-            ///   <para>LogType used for regular log messages.</para>
-            /// </summary>
-            Log,
-            /// <summary>
-            ///   <para>LogType used for Exceptions.</para>
-            /// </summary>
-            Exception,
-            /// <summary>
-            ///   <para>LogType used for Success.</para>
-            /// </summary>
-            Success,
-            /// <summary>
-            ///   <para>LogType used for Info.</para>
-            /// </summary>
-            Info,
-        }
-
         public Queue<Info> infos = new Queue<Info>();
         public float defaultTimer = 8f;
         
@@ -57,9 +32,25 @@ namespace ExpressoBits.Console
             if(isLogUnityMessages) Application.logMessageReceived -= ApplicationOnlogMessageReceived;
         }
 
-        private void ApplicationOnlogMessageReceived(string condition, string stacktrace, LogType type)
+        private void ApplicationOnlogMessageReceived(string message, string stacktrace, LogType type)
         {
-            Log(condition);
+            switch (type)
+            {
+                case LogType.Assert:
+                    LogHelp(message);
+                    break;
+                case LogType.Exception:
+                case LogType.Error:
+                    LogError(message);
+                    if(stacktrace.Length > 0) LogError(stacktrace);
+                    break;
+                case LogType.Warning:
+                    LogWarn(message);
+                    break;
+                default:
+                    Log(message);
+                    break;
+            }
         }
 
         public void Log(Info info, float timer)
@@ -72,56 +63,82 @@ namespace ExpressoBits.Console
             onDequeue?.Invoke(e);
         }
         
-        public void Log(string logText, float timer)
+        public void Log(string logText,LogAttribute logAttribute, float timer)
         {
-            var info = new Info(logText);
+            var info = new Info(logText,logAttribute);
             Log(info, timer);
         }
+        
+        #region 
+        public LogAttribute defaultLogAttribute;
+        public LogAttribute warnLogAttribute;
+        public LogAttribute errorLogAttribute;
+        public LogAttribute helpLogAttribute;
+        public LogAttribute successLogAttribute;
+        #endregion
+        
+        
+        
+        public void Log(string logText, Sprite sprite, Color color)
+        {
+            Log(logText, new LogAttribute(sprite,color), defaultTimer);
+        }
+        
+        public void Log(string logText,LogAttribute logAttribute)
+        {
+            Log(logText, logAttribute, defaultTimer);
+        }
+
+        #region Utils
         
         public void Log(string logText)
         {
             Log(logText, defaultTimer);
         }
-
-        #region Utils
+        
+        public void Log(string logText, float timer)
+        {
+            Log(logText,defaultLogAttribute, timer);
+        }
+        
         public void LogWarn(string logText, float timer)
         {
-            Log(logText, timer);
+            Log(logText,warnLogAttribute, timer);
         }
         
         public void LogError(string logText, float timer)
         {
-            Log(logText, timer);
+            Log(logText,errorLogAttribute, timer);
         }
         
         public void LogHelp(string logText, float timer)
         {
-            Log(logText, timer);
+            Log(logText,helpLogAttribute, timer);
         }
         
         public void LogSuccess(string logText, float timer)
         {
-            Log(logText, timer);
+            Log(logText,successLogAttribute, timer);
         }
         
         public void LogWarn(string logText)
         {
-            Log(logText, defaultTimer);
+            LogWarn(logText, defaultTimer);
         }
         
         public void LogError(string logText)
         {
-            Log(logText, defaultTimer);
+            LogError(logText, defaultTimer);
         }
         
         public void LogHelp(string logText)
         {
-            Log(logText, defaultTimer);
+            LogHelp(logText, defaultTimer);
         }
         
         public void LogSuccess(string logText)
         {
-            Log(logText, defaultTimer);
+            LogSuccess(logText, defaultTimer);
         }
 
         /**

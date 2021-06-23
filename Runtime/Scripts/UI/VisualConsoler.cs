@@ -87,8 +87,6 @@ namespace ExpressoBits.Console.UI
                     m_LogPanel.logPanelScroll.SetActive(false);
                     m_LogPanel.logPanelToast.SetActive(true);
                 }
-
-                
             }
 
         }
@@ -101,11 +99,11 @@ namespace ExpressoBits.Console.UI
 
         private void Dequeue(Info info)
         {
-            InfoMessage infoMessage = infoMessages[info];
+            var infoMessage = infoMessages[info];
             infoMessages.Remove(info);
             if (infoMessage != null)
             {
-                Destroy(infoMessage);
+                Destroy(infoMessage.gameObject);
             }
         }
 

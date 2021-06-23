@@ -25,8 +25,15 @@ namespace ExpressoBits.Console.UI
 
         private void Start()
         {
-            // image.sprite = _info.logAttribute.icon;
-            // background.color = _info.logAttribute.backgroundColor;
+            if (_info.logAttribute.icon)
+            {
+                image.sprite = _info.logAttribute.icon;
+            }
+            else
+            {
+                image.color = new Color(0f,0f,0f,0f);
+            }
+            background.color = _info.logAttribute.backgroundColor;
             UpdateContent();
         }
 

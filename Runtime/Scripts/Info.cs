@@ -7,12 +7,14 @@ namespace ExpressoBits.Console
     {
         public string content;
         public bool isUpdate;
+        public LogAttribute logAttribute;
         private float timer;
 
-        public Info(string content)
+        public Info(string content,LogAttribute logAttribute)
         {
             this.content = content;
             this.isUpdate = false;
+            this.logAttribute = logAttribute;
             this.timer = Time.realtimeSinceStartup;
         }
 

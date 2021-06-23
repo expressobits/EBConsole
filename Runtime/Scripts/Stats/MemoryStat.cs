@@ -14,10 +14,12 @@ namespace ExpressoBits.Console.Stats
         private void Awake()
         {
             _infoMemory = new Info(
-                string.Format(ColorText("{0}",color)+" RAM",SystemInfo.systemMemorySize));
+                string.Format(ColorText("{0}",color)+" RAM",SystemInfo.systemMemorySize),
+                new LogAttribute(ramIcon,Color.white));
 
             _infoVram = new Info(
-                string.Format(ColorText("{0}",Color.green)+" VRAM",SystemInfo.graphicsMemorySize));
+                string.Format(ColorText("{0}",Color.green)+" VRAM",SystemInfo.graphicsMemorySize),
+                new LogAttribute(vRamIcon,Color.white));
 
             infos.Add(_infoMemory);
             infos.Add(_infoVram);
