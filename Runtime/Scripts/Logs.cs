@@ -16,6 +16,7 @@ namespace ExpressoBits.Console
         public int maxLogCount = 128;
         
         [SerializeField] private bool isLogUnityMessages;
+        [SerializeField] private bool isLogUnityStackTraces;
 
         public Action<Info> onLog;
         public Action<Info> onDequeue;
@@ -42,7 +43,7 @@ namespace ExpressoBits.Console
                 case LogType.Exception:
                 case LogType.Error:
                     LogError(message);
-                    if(stacktrace.Length > 0) LogError(stacktrace);
+                    if(isLogUnityStackTraces && stacktrace.Length > 0) LogError(stacktrace);
                     break;
                 case LogType.Warning:
                     LogWarn(message);
