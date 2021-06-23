@@ -6,13 +6,13 @@ namespace ExpressoBits.Console.Stats
     {
 
         [Range(0.1f,1f)]
-        public float UpdateInterval = 0.5f;
+        public float updateInterval = 0.5f;
         
         public Sprite fpsIcon;
         public Sprite msIcon;
 
-        private Info _infoFPS;
-        private Info _infoMS;
+        private Info m_InfoFPS;
+        private Info m_InfoMS;
 
         private float m_AccumulatedTime = 0f;
         private int m_AccumulatedFrames = 0;
@@ -20,33 +20,31 @@ namespace ExpressoBits.Console.Stats
         private float m_FrameTime = 0f;
         private float m_FrameRate = 0f;
 
-        public static float MinTime = 0.000000001f;
-
         private void Awake()
         {
             Stater = GetComponentInParent<Stater>();
-            _infoFPS = new Info("",new LogAttribute(fpsIcon,Color.white))
+            m_InfoFPS = new Info("A",new LogAttribute(fpsIcon,new Color(0f,0f,0f,0f)))
             {
                 isUpdate = true
             };
-            _infoMS = new Info("",new LogAttribute(msIcon,Color.white))
+            m_InfoMS = new Info("A",new LogAttribute(msIcon,new Color(0f,0f,0f,0f)))
             {
                 isUpdate = true
             };
-            infos.Add(_infoFPS);
-            infos.Add(_infoMS);
+            infos.Add(m_InfoFPS);
+            infos.Add(m_InfoMS);
         }
 
 
         private void Update()
         {
-            float deltaTime = Time.unscaledDeltaTime;
+            var deltaTime = Time.unscaledDeltaTime;
 
             m_AccumulatedTime += deltaTime;
             m_AccumulatedFrames++;
 
-            float nowTime = Time.realtimeSinceStartup;
-            if (nowTime - m_LastUpdateTime < UpdateInterval) {
+            var nowTime = Time.realtimeSinceStartup;
+            if (nowTime - m_LastUpdateTime < updateInterval) {
                 return;
             }
 
@@ -62,11 +60,11 @@ namespace ExpressoBits.Console.Stats
 
         private void UpdateInfo()
         {
-            _infoFPS.content = string.Format(
+            m_InfoFPS.content = string.Format(
                 ColorText("{0}",color)+" FPS ",
                 m_FrameRate.ToString("F0"));
 
-            _infoMS.content = string.Format(
+            m_InfoMS.content = string.Format(
                 ColorText("{0}",color)+" MS ",
                 (m_FrameTime*1000f).ToString("F1"));
         }

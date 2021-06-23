@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace ExpressoBits.Console.UI
 {
     [AddComponentMenu(menuName:"UI/Visual Consoler")]
-    public class VisualConsoler : MonoBehaviour, IVisualConsoler
+    public class VisualConsoler : MonoBehaviour
     {
         public ConsoleAlign align;
         public Theme theme;
@@ -26,8 +26,7 @@ namespace ExpressoBits.Console.UI
 
         private void Awake()
         {
-            Consoler.Instance.SetVisual(this);
-            if (Consoler.Instance.Commander)
+            if (Consoler.Commander)
             {
                 SetupConsoleInput();
 
@@ -36,47 +35,47 @@ namespace ExpressoBits.Console.UI
                     if (!consoleInput.text.Contains("\n")) return;
                     var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
                     consoleInput.text = text;
-                    Consoler.Instance.Commander.ProcessCommand(text);
+                    Consoler.Commander.ProcessCommand(text);
                 });
 
                 consoleInput.GetComponentInChildren<Text>().font = theme.font;
 
                 consoleInput.gameObject.SetActive(false);
             
-                Consoler.Instance.Commander.onCloseCommander.AddListener(delegate {
+                Consoler.Commander.onCloseCommander.AddListener(delegate {
                     consoleInput.gameObject.SetActive(false);
                     //consoleInput.DeactivateInputField();
                 });
             
-                Consoler.Instance.Commander.onOpenCommander.AddListener(delegate
+                Consoler.Commander.onOpenCommander.AddListener(delegate
                 {
                     consoleInput.gameObject.SetActive(true);
                     consoleInput.ActivateInputField();
                 });
             
-                Consoler.Instance.Commander.onFinishProcessCommand.AddListener(delegate
+                Consoler.Commander.onFinishProcessCommand.AddListener(delegate
                 {
                     consoleInput.text = string.Empty;
                 });
             }
             
             // Check if logs exists
-            if (Consoler.Instance.Logs)
+            if (Consoler.Logs)
             {
                 SetupLogPanel();
 
-                Consoler.Instance.Logs.onLog += Log;
-                Consoler.Instance.Logs.onDequeue += Dequeue;
+                Consoler.Logs.onLog += Log;
+                Consoler.Logs.onDequeue += Dequeue;
 
-                if (Consoler.Instance.Commander)
+                if (Consoler.Commander)
                 {
-                    Consoler.Instance.Commander.onCloseCommander.AddListener(delegate
+                    Consoler.Commander.onCloseCommander.AddListener(delegate
                     {
                         m_LogPanel.logPanelScroll.SetActive(false);
                         m_LogPanel.logPanelToast.SetActive(true);
                     });
                 
-                    Consoler.Instance.Commander.onOpenCommander.AddListener(delegate
+                    Consoler.Commander.onOpenCommander.AddListener(delegate
                     {
                         m_LogPanel.logPanelScroll.SetActive(true);
                         m_LogPanel.logPanelToast.SetActive(false);
@@ -159,7 +158,7 @@ namespace ExpressoBits.Console.UI
             
             toastLog.Setup(info,8f,theme.font);
             
-            if (!Consoler.Instance.Commander) return toastLog;
+            if (!Consoler.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
             staticLog.Setup(info,theme.font);
@@ -174,7 +173,7 @@ namespace ExpressoBits.Console.UI
         public void SetInputText(string text)
         {
             consoleInput.text = text;
-            Consoler.Visual.SetCaretInputPosition(consoleInput.text.Length);
+            SetCaretInputPosition(consoleInput.text.Length);
         }
 
         public void SetCaretInputPosition(int position)

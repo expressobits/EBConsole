@@ -56,7 +56,7 @@ namespace ExpressoBits.Console
 
         public void Log(Info info, float timer)
         {
-            if (!Consoler.Instance.Commander) return;
+            if (!Consoler.Commander) return;
             infos.Enqueue(info);
             onLog?.Invoke(info);
             if (infos.Count <= maxLogCount) return;

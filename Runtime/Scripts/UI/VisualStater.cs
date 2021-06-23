@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using ExpressoBits.Console.Stats;
 
 namespace ExpressoBits.Console.UI
 {
@@ -9,39 +8,43 @@ namespace ExpressoBits.Console.UI
     public class VisualStater : MonoBehaviour
     {
         public InfoMessage infoMessagePrefab;
-
-        private readonly Dictionary<Info,InfoMessage> stats = new Dictionary<Info,InfoMessage>();
-
         public Theme theme;
 
+        private readonly Dictionary<Info,InfoMessage> m_Stats = new Dictionary<Info,InfoMessage>();
+        private Stater m_Stater;
+
+        private void Start()
+        {
+            m_Stater = FindObjectOfType<Stater>();
+            m_Stater.onAddStat += AddInfo;
+            m_Stater.onUpdateInfo += UpdateInfo;
+            m_Stater.onRemoveStat += RemoveInfo;
+
+        }
+
+        private void UpdateInfo(Info info)
+        {
+            //m_Stats[info].UpdateContent(info.content);
+        }
+
         // Add new visual stat
-        public void AddInfo(Info info)
+        private void AddInfo(Info info)
         {
-            InfoMessage logMessage = Instantiate<InfoMessage>(infoMessagePrefab,transform);
+            var logMessage = Instantiate(infoMessagePrefab,transform);
             logMessage.Setup(info,theme.font);
-            stats.Add(info,logMessage);
+            m_Stats.Add(info,logMessage);
+            logMessage.transform.SetSiblingIndex(0);
         }
 
-        public void AddInfo(Info info, float timer)
+        private void RemoveInfo(Info info)
         {
-            InfoMessage logMessage = Instantiate<InfoMessage>(infoMessagePrefab,transform);
-            logMessage.Setup(info,theme.font);
-            stats.Add(info,logMessage);
-        }
-
-        public void RemoveInfo(Info info)
-        {
-            if (stats.TryGetValue(info, out InfoMessage infoMessage))
+            if (m_Stats.TryGetValue(info, out var infoMessage))
             {
                 Destroy(infoMessage.gameObject);
-                stats.Remove(info);
-
+                m_Stats.Remove(info);
             }
 
         }
-
-
-        //
     }
 
 }

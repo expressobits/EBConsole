@@ -15,15 +15,15 @@ namespace ExpressoBits.Console.Stats
         {
             _graphicsDeviceName = new Info(
                 string.Format(ColorText("{0}",color),SystemInfo.graphicsDeviceName),
-                new LogAttribute(graphicIcon,Color.white));
+                new LogAttribute(graphicIcon,new Color(0f,0f,0f,0f)));
 
             _operatingSystem = new Info(
                 string.Format(ColorText("{0}",color),SystemInfo.operatingSystem),
-                new LogAttribute(graphicIcon,Color.white));
+                new LogAttribute(graphicIcon,new Color(0f,0f,0f,0f)));
 
             _processorType = new Info(
                 string.Format(ColorText("{0}",color),SystemInfo.processorType),
-                new LogAttribute(graphicIcon,Color.white));
+                new LogAttribute(graphicIcon,new Color(0f,0f,0f,0f)));
 
 
             infos.Add(_graphicsDeviceName);

@@ -13,13 +13,14 @@ namespace ExpressoBits.Console.Stats
 
         private readonly List<Info> m_Infos = new List<Info>();
 
-        public Action<Info> OnAddStat;
-        public Action<Info> OnRemoveStat;
+        public Action<Info> onAddStat;
+        public Action<Info> onRemoveStat;
+        public Action<Info> onUpdateInfo;
         
         private void Awake()
         {
             statCommand = new StatCommand();
-            Consoler.Instance.Commander.AddCommand(statCommand);
+            Consoler.Commander.AddCommand(statCommand);
         }
 
 
@@ -27,12 +28,12 @@ namespace ExpressoBits.Console.Stats
         {
             if (m_Infos.Contains(info))
             {
-                //visualStats.Update(info);
+                onUpdateInfo?.Invoke(info);
             }
             else
             {
                 m_Infos.Add(info);
-                OnAddStat?.Invoke(info);
+                onAddStat?.Invoke(info);
             }
 
         }
@@ -40,7 +41,7 @@ namespace ExpressoBits.Console.Stats
         public void RemoveStat(Info info)
         {
             if (!m_Infos.Contains(info)) return;
-            OnRemoveStat?.Invoke(info);
+            onRemoveStat?.Invoke(info);
             m_Infos.Remove(info);
 
         }

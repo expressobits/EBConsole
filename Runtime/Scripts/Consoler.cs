@@ -6,32 +6,25 @@ namespace ExpressoBits.Console
     [AddComponentMenu(menuName: "Console/Consoler")]
     public class Consoler : Singleton<Consoler>
     {
-        public static IVisualConsoler Visual => Instance.visual;
-
-        public void SetVisual(IVisualConsoler newVisual)
-        {
-            visual = newVisual;
-        }
-        private IVisualConsoler visual;
+        
         private Commander m_Commander;
         private Logs m_Logs;
-        
 
-        public Commander Commander
+        public static Commander Commander
         {
             get
             {
-                if (!m_Commander) m_Commander = GetComponent<Commander>();
-                return m_Commander;
+                if (!Instance.m_Commander) Instance.m_Commander = Instance.GetComponent<Commander>();
+                return Instance.m_Commander;
             }
         }
         
-        public Logs Logs
+        public static Logs Logs
         {
             get
             {
-                if (!m_Logs) m_Logs = GetComponent<Logs>();
-                return m_Logs;
+                if (!Instance.m_Logs) Instance.m_Logs = Instance.GetComponent<Logs>();
+                return Instance.m_Logs;
             }
         }
 

@@ -28,8 +28,8 @@ namespace ExpressoBits.Console.Commands
                     return false;
                 }
                 Physics.gravity = new Vector3(x, y, z);
-                if (Consoler.Instance.Logs.GetComponent<Logs>() != null)
-                    Consoler.Instance.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
+                if (Consoler.Logs.GetComponent<Logs>() != null)
+                    Consoler.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
                 return true;
             }
 
@@ -40,8 +40,8 @@ namespace ExpressoBits.Console.Commands
                     return false;
                 }
                 Physics.gravity = new Vector3(Physics.gravity.x, value, Physics.gravity.z);
-                if (Consoler.Instance.Logs.GetComponent<Logs>() != null)
-                    Consoler.Instance.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
+                if (Consoler.Logs.GetComponent<Logs>() != null)
+                    Consoler.Logs.Log("Update gravity to <color=yellow>" + Physics.gravity + "</color>");
                 return true;
             }
 

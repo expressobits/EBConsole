@@ -9,11 +9,11 @@ namespace ExpressoBits.Console.UI
         public Image image;
         public Image background;
 
-        public Info _info;
+        public Info info;
 
         public void Setup(Info info,Font font)
         {
-            this._info = info;
+            this.info = info;
             text.font = font;
         }
 
@@ -25,26 +25,26 @@ namespace ExpressoBits.Console.UI
 
         private void Start()
         {
-            if (_info.logAttribute.icon)
+            if (info.logAttribute.icon)
             {
-                image.sprite = _info.logAttribute.icon;
+                image.sprite = info.logAttribute.icon;
             }
             else
             {
                 image.color = new Color(0f,0f,0f,0f);
             }
-            background.color = _info.logAttribute.backgroundColor;
+            background.color = info.logAttribute.backgroundColor;
             UpdateContent();
         }
 
         public void UpdateContent()
         {
-            text.text = _info.content;
+            text.text = info.content;
         }
 
         private void Update()
         {
-            if(_info.isUpdate)
+            if(info.isUpdate)
             {
                 UpdateContent();
             }

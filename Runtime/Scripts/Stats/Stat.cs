@@ -8,9 +8,9 @@ namespace ExpressoBits.Console.Stats
     {
         public bool startShow = false;
         public Color color;
-        protected bool m_isShow;
+        protected bool isShow;
 
-        public string ArgumentName;
+        public string argumentName;
 
         public Stater Stater { get; set; }
 
@@ -23,9 +23,9 @@ namespace ExpressoBits.Console.Stats
         private void Start()
         {
             
-            m_isShow = startShow;
+            isShow = startShow;
 
-            if(m_isShow)
+            if(isShow)
             {
                 foreach(Info info in infos)
                 {
@@ -33,13 +33,13 @@ namespace ExpressoBits.Console.Stats
                 }
             }
         
-            Stater.statCommand.Add(ArgumentName,this);
+            Stater.statCommand.Add(argumentName,this);
         }
 
         public void Toggle()
         {
-            m_isShow = !m_isShow;
-            if(m_isShow){
+            isShow = !isShow;
+            if(isShow){
                 foreach(Info info in infos)
                 {
                     Stater.AddStat(info);

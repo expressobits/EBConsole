@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6f6b5f89b83e344a0cb4140d9d5821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 1
+  startShow: 0
   color: {r: 0, g: 1, b: 0.11850667, a: 1}
-  ArgumentName: fps
-  UpdateInterval: 0.5
+  argumentName: fps
+  updateInterval: 0.5
   fpsIcon: {fileID: 21300000, guid: 98eec07ae1685494fa0a798b93323fa5, type: 3}
   msIcon: {fileID: 21300000, guid: 04a14eec59732d04bba3b2781a1b381a, type: 3}
 --- !u!114 &1843958722
@@ -63,9 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66e2c1999fbc2f4f83e1b9f177e706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 1
+  startShow: 0
   color: {r: 0, g: 1, b: 0.11023998, a: 1}
-  ArgumentName: memory
+  argumentName: memory
   ramIcon: {fileID: 21300000, guid: 901b98b5635b1c2408f6f4d99c6925a5, type: 3}
   vRamIcon: {fileID: 21300000, guid: 9d26b10a22e755848b9f484def59de10, type: 3}
 --- !u!114 &1843958723
@@ -80,9 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c927e6b8bca654fb08ca8b4830dc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 1
+  startShow: 0
   color: {r: 1, g: 0.99247026, b: 0, a: 1}
-  ArgumentName: system
+  argumentName: system
   graphicIcon: {fileID: 21300000, guid: e11196cdc6673e249832efdfad4dd447, type: 3}
 --- !u!1 &6693355490592070695
 GameObject:
@@ -128,4 +128,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bf798056610f345997390a8ab27f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualStater: {fileID: 0}

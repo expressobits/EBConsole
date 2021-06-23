@@ -15,11 +15,11 @@ namespace ExpressoBits.Console.Stats
         {
             _infoMemory = new Info(
                 string.Format(ColorText("{0}",color)+" RAM",SystemInfo.systemMemorySize),
-                new LogAttribute(ramIcon,Color.white));
+                new LogAttribute(ramIcon,new Color(0f,0f,0f,0f)));
 
             _infoVram = new Info(
                 string.Format(ColorText("{0}",Color.green)+" VRAM",SystemInfo.graphicsMemorySize),
-                new LogAttribute(vRamIcon,Color.white));
+                new LogAttribute(vRamIcon,new Color(0f,0f,0f,0f)));
 
             infos.Add(_infoMemory);
             infos.Add(_infoVram);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using ExpressoBits.Console.Commands;
 using UnityEngine.Events;
@@ -15,7 +16,7 @@ namespace ExpressoBits.Console
 
         [Header("List of valid Static commands")]
         public ConsoleCommand[] staticCommands;
-        public List<ICommand> commands = new List<ICommand>();
+        public readonly List<ICommand> commands = new List<ICommand>();
 
         public ConsoleCommand commandWithoutPrefix;
 
@@ -25,9 +26,21 @@ namespace ExpressoBits.Console
         public UnityEvent onProcessCommand;
         public UnityEvent onFinishProcessCommand;
 
-        #region private values
+        public Action onChangeInputCommander;
 
+        public string Input
+        {
+            get => m_Input;
+            set
+            {
+                m_Input = value;
+                onChangeInputCommander?.Invoke();
+            }
+        }
+        
+        #region private values
         private bool m_ActiveInput;
+        private string m_Input = string.Empty;
         private DeveloperConsole m_DeveloperConsole;
         private DeveloperConsole DeveloperConsole
         {

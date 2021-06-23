@@ -55,7 +55,7 @@ namespace ExpressoBits.Console
 
         private void AddLastCommand()
         {
-            var text = Consoler.Visual.GetActualText();
+            var text = Consoler.Commander.Input;
             if (text.Length > 0)
             {
                 history.Add(text);
@@ -70,7 +70,7 @@ namespace ExpressoBits.Console
                 if (history.Count == 0) return;
                 m_ActualIndex++;
                 if (m_ActualIndex == history.Count) m_ActualIndex = 0;
-                Consoler.Visual.SetInputText(history[m_ActualIndex]);
+                Consoler.Commander.Input = history[m_ActualIndex];
             }
 
             else if (Input.GetKeyDown(upKeyCode))
@@ -80,14 +80,14 @@ namespace ExpressoBits.Console
                 switch (m_ActualIndex)
                 {
                     case noValue:
-                        Consoler.Visual.SetInputText("");
+                        Consoler.Commander.Input = "";
                         return;
                     case -2:
                         m_ActualIndex = history.Count - 1;
                         break;
                 }
 
-                Consoler.Visual.SetInputText(history[m_ActualIndex]);
+                Consoler.Commander.Input = history[m_ActualIndex];
             }
         }
 

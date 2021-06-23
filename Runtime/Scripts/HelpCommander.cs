@@ -28,14 +28,14 @@ namespace ExpressoBits.Console
         {
             if (!m_Logs) return;
             //NOTE get package version?
-            Consoler.Instance.Logs.Log("Expresso Bits Console <color=red>v0.9.1</color>",3f);
-            Consoler.Instance.Logs.LogHelp(helpTextToOpen);
+            Consoler.Logs.Log("Expresso Bits Console <color=red>v0.9.1</color>",3f);
+            Consoler.Logs.LogHelp(helpTextToOpen);
 
             m_Open =
             (
                 delegate
                 {
-                    Consoler.Instance.Logs.LogHelp(helpTextToClose);
+                    Consoler.Logs.LogHelp(helpTextToClose);
                     m_Commander.onOpenCommander.RemoveListener(this.m_Open);
                 }
             );

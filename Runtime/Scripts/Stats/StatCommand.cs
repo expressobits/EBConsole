@@ -8,41 +8,44 @@ namespace ExpressoBits.Console.Stats{
     {
         public string CommandWord => "stat";
 
-        public Dictionary<string,StatBehaviour> infoArgDictionary = new Dictionary<string, StatBehaviour>();
-        public List<string> infos = new List<string>();
-
-        public Stater stater;
-
+        private readonly Dictionary<string,StatBehaviour> m_InfoArgDictionary = new Dictionary<string, StatBehaviour>();
         public bool Process(string[] args)
         {
-            if(args.Length == 0)
+            switch (args.Length)
             {
-                foreach(string info in infoArgDictionary.Keys)
+                case 0:
                 {
-                    Consoler.Instance.Logs.Log("->"+info);
+                    foreach(var info in m_InfoArgDictionary.Keys)
+                    {
+                        Consoler.Logs.Log("->"+info);
+                    }
+                    Consoler.Logs.Log("Valid stat arguments:");
+                    break;
                 }
-                Consoler.Instance.Logs.Log("Valid stat arguments:");
-                
-            }
-            else if(args.Length == 1)
-            {
-                if (infoArgDictionary.TryGetValue(args[0], out StatBehaviour statBehaviour))
+                case 1:
                 {
-                    statBehaviour.Toggle();
-                    return true;
+                    if (m_InfoArgDictionary.TryGetValue(args[0], out var statBehaviour))
+                    {
+                        statBehaviour.Toggle();
+                        return true;
+                    }
+                    else
+                    {
+                        Consoler.Logs.Log("Invalid stat argument:\""+args[0]+"\"");
+                    }
+                    break;
                 }
+                default:
+                    Consoler.Logs.LogWarn("Stat command accepts only one argument!");
+                    break;
             }
-            else
-            {
-                Consoler.Instance.Logs.LogWarn("Stat command accepts only one argument!");
-            }
+
             return false;
-            
         }
 
         public void Add(string command,StatBehaviour statBehaviour)
         {
-            infoArgDictionary.Add(command,statBehaviour);
+            m_InfoArgDictionary.Add(command,statBehaviour);
         }
 
         
