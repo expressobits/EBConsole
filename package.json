@@ -2,7 +2,7 @@
     "name": "br.com.expressobits.console",
     "displayName": "EB Console",
     "version": "1.0.5",
-    "unity": "2019.3",
+    "unity": "2020.3",
     "description": "Free and customizable console in game for Unity",
     "keywords": [
         "utility"
