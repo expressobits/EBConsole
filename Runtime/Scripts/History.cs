@@ -55,12 +55,11 @@ namespace ExpressoBits.Console
 
         private void AddLastCommand()
         {
-            if (Consoler.Instance.visualConsoler.consoleInput.text.Length > 0)
+            var text = Consoler.Visual.GetActualText();
+            if (text.Length > 0)
             {
-                history.Add(Consoler.Instance.visualConsoler.consoleInput.text);
-
+                history.Add(text);
             }
-
             m_ActualIndex = noValue;
         }
 
@@ -71,8 +70,7 @@ namespace ExpressoBits.Console
                 if (history.Count == 0) return;
                 m_ActualIndex++;
                 if (m_ActualIndex == history.Count) m_ActualIndex = 0;
-                Consoler.Instance.visualConsoler.consoleInput.text = history[m_ActualIndex];
-                Consoler.Instance.visualConsoler.consoleInput.caretPosition = Consoler.Instance.visualConsoler.consoleInput.text.Length;
+                Consoler.Visual.SetInputText(history[m_ActualIndex]);
             }
 
             else if (Input.GetKeyDown(upKeyCode))
@@ -82,15 +80,14 @@ namespace ExpressoBits.Console
                 switch (m_ActualIndex)
                 {
                     case noValue:
-                        Consoler.Instance.visualConsoler.consoleInput.text = "";
+                        Consoler.Visual.SetInputText("");
                         return;
                     case -2:
                         m_ActualIndex = history.Count - 1;
                         break;
                 }
 
-                Consoler.Instance.visualConsoler.consoleInput.text = history[m_ActualIndex];
-                Consoler.Instance.visualConsoler.consoleInput.caretPosition = Consoler.Instance.visualConsoler.consoleInput.text.Length;
+                Consoler.Visual.SetInputText(history[m_ActualIndex]);
             }
         }
 

@@ -12,18 +12,20 @@ namespace ExpressoBits.Console.UI
 
         private readonly Dictionary<Info,InfoMessage> stats = new Dictionary<Info,InfoMessage>();
 
+        public Theme theme;
+
         // Add new visual stat
         public void AddInfo(Info info)
         {
             InfoMessage logMessage = Instantiate<InfoMessage>(infoMessagePrefab,transform);
-            logMessage.Setup(info);
+            logMessage.Setup(info,theme.font);
             stats.Add(info,logMessage);
         }
 
         public void AddInfo(Info info, float timer)
         {
             InfoMessage logMessage = Instantiate<InfoMessage>(infoMessagePrefab,transform);
-            logMessage.Setup(info,timer);
+            logMessage.Setup(info,theme.font);
             stats.Add(info,logMessage);
         }
 

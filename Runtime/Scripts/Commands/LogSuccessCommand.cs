@@ -17,7 +17,6 @@ namespace ExpressoBits.Console.Commands
 
             if (logText.Length <= 0) return false;
 
-            Debug.LogWarning(logText);
             if (Consoler.Instance.Logs != null) Consoler.Instance.Logs.LogSuccess(logText);
 
             return true;

@@ -1,16 +1,19 @@
+using UnityEngine;
+
 namespace ExpressoBits.Console
 {
     [System.Serializable]
-    public class Info
+    public struct Info
     {
         public string content;
-        public LogAttribute logAttribute;
         public bool isUpdate;
+        private float timer;
 
-        public Info(string content,LogAttribute logAttribute)
+        public Info(string content)
         {
             this.content = content;
-            this.logAttribute = logAttribute;
+            this.isUpdate = false;
+            this.timer = Time.realtimeSinceStartup;
         }
 
         

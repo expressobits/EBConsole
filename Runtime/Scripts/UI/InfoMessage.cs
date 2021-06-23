@@ -11,22 +11,22 @@ namespace ExpressoBits.Console.UI
 
         public Info _info;
 
-        public void Setup(Info info)
+        public void Setup(Info info,Font font)
         {
             this._info = info;
+            text.font = font;
         }
 
-        public void Setup(Info info,float timer)
+        public void Setup(Info info,float timer,Font font)
         {
-            Setup(info);
+            Setup(info,font);
             Destroy(gameObject, timer);
         }
 
         private void Start()
         {
-            text.font = Consoler.Instance.visualConsoler.theme.font;
-            image.sprite = _info.logAttribute.icon;
-            background.color = _info.logAttribute.backgroundColor;
+            // image.sprite = _info.logAttribute.icon;
+            // background.color = _info.logAttribute.backgroundColor;
             UpdateContent();
         }
 

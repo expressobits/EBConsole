@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace ExpressoBits.Console.UI
 {
     [AddComponentMenu(menuName:"UI/Visual Consoler")]
-    public class VisualConsoler : MonoBehaviour
+    public class VisualConsoler : MonoBehaviour, IVisualConsoler
     {
         public ConsoleAlign align;
         public Theme theme;
@@ -17,15 +17,16 @@ namespace ExpressoBits.Console.UI
         public InfoMessage uiLogPrefab;
 
         
-        
         [HideInInspector]
         public InputField consoleInput;
         
         private LogPanel m_LogPanel;
 
+        public Dictionary<Info, InfoMessage> infoMessages = new Dictionary<Info, InfoMessage>();
+
         private void Awake()
         {
-            Consoler.Instance.visualConsoler = this;
+            Consoler.Instance.SetVisual(this);
             if (Consoler.Instance.Commander)
             {
                 SetupConsoleInput();
@@ -64,6 +65,9 @@ namespace ExpressoBits.Console.UI
             {
                 SetupLogPanel();
 
+                Consoler.Instance.Logs.onLog += Log;
+                Consoler.Instance.Logs.onDequeue += Dequeue;
+
                 if (Consoler.Instance.Commander)
                 {
                     Consoler.Instance.Commander.onCloseCommander.AddListener(delegate
@@ -87,6 +91,22 @@ namespace ExpressoBits.Console.UI
                 
             }
 
+        }
+
+        private void Log(Info info)
+        {
+            InfoMessage message = InstantiateLogsAndReturnToastLog(info);
+            infoMessages.Add(info,message);
+        }
+
+        private void Dequeue(Info info)
+        {
+            InfoMessage infoMessage = infoMessages[info];
+            infoMessages.Remove(info);
+            if (infoMessage != null)
+            {
+                Destroy(infoMessage);
+            }
         }
 
 
@@ -133,24 +153,35 @@ namespace ExpressoBits.Console.UI
             return consoleInput.gameObject.activeSelf;
         }
 
-        public InfoMessage InstantiateLogsAndReturnToastLog(Info info,float timer)
+        public InfoMessage InstantiateLogsAndReturnToastLog(Info info)
         {
 
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
             
-            toastLog.Setup(info,8f);
+            toastLog.Setup(info,8f,theme.font);
             
             if (!Consoler.Instance.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
-            staticLog.Setup(info);
-
-
+            staticLog.Setup(info,theme.font);
             return staticLog;
+        }
 
-            
+        public string GetActualText()
+        {
+            return consoleInput.text;
+        }
 
+        public void SetInputText(string text)
+        {
+            consoleInput.text = text;
+            Consoler.Visual.SetCaretInputPosition(consoleInput.text.Length);
+        }
+
+        public void SetCaretInputPosition(int position)
+        {
+            consoleInput.caretPosition = position;
         }
     }
 

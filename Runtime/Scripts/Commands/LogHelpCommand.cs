@@ -26,7 +26,6 @@ namespace ExpressoBits.Console.Commands
                 return true;
             }
 
-            Debug.Log(logText);
             if (Consoler.Instance.Logs != null) Consoler.Instance.Logs.LogHelp(logText);
 
             return true;

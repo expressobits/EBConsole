@@ -8,7 +8,7 @@ namespace ExpressoBits.Console
     public class DeveloperConsole
     {
         private readonly string m_Prefix;
-        public List<ICommand> m_Commands;
+        private readonly List<ICommand> m_Commands;
 
         private readonly ICommand m_CommandWithoutPrefix;
 
@@ -41,9 +41,6 @@ namespace ExpressoBits.Console
                 string[] args = inputSplit.Skip(1).ToArray();
                 return ProcessCommand(commandInput, args);
             }
-
-
-
         }
 
 
@@ -55,16 +52,9 @@ namespace ExpressoBits.Console
                 {
                     continue;
                 }
-                if (command.Process(args))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
 
+                return command.Process(args);
+            }
             return false;
         }
     }

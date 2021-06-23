@@ -14,16 +14,13 @@ namespace ExpressoBits.Console.Stats
         private void Awake()
         {
             _graphicsDeviceName = new Info(
-                string.Format(ColorText("{0}",color),SystemInfo.graphicsDeviceName),
-                new LogAttribute(graphicIcon,new Color(0,0,0,0)));
+                string.Format(ColorText("{0}",color),SystemInfo.graphicsDeviceName));
 
             _operatingSystem = new Info(
-                string.Format(ColorText("{0}",color),SystemInfo.operatingSystem),
-                new LogAttribute(graphicIcon,new Color(0,0,0,0)));
+                string.Format(ColorText("{0}",color),SystemInfo.operatingSystem));
 
             _processorType = new Info(
-                string.Format(ColorText("{0}",color),SystemInfo.processorType),
-                new LogAttribute(graphicIcon,new Color(0,0,0,0)));
+                string.Format(ColorText("{0}",color),SystemInfo.processorType));
 
 
             infos.Add(_graphicsDeviceName);

@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using ExpressoBits.Console.UI;
 using System.Collections.Generic;
 using ExpressoBits.Console.Commands;
 
@@ -7,13 +7,14 @@ namespace ExpressoBits.Console.Stats
 {
     public class Stater : MonoBehaviour
     {
-        public VisualStater visualStater;
 
         [HideInInspector]
         public StatCommand statCommand;
 
-        private readonly List<Info> m_infos = new List<Info>();
+        private readonly List<Info> m_Infos = new List<Info>();
 
+        public Action<Info> OnAddStat;
+        public Action<Info> OnRemoveStat;
         
         private void Awake()
         {
@@ -24,25 +25,23 @@ namespace ExpressoBits.Console.Stats
 
         public void AddStat(Info info)
         {
-            if (m_infos.Contains(info))
+            if (m_Infos.Contains(info))
             {
                 //visualStats.Update(info);
             }
             else
             {
-                m_infos.Add(info);
-                visualStater.AddInfo(info);
+                m_Infos.Add(info);
+                OnAddStat?.Invoke(info);
             }
 
         }
 
         public void RemoveStat(Info info)
         {
-            if (m_infos.Contains(info))
-            {
-                visualStater.RemoveInfo(info);
-                m_infos.Remove(info);
-            }
+            if (!m_Infos.Contains(info)) return;
+            OnRemoveStat?.Invoke(info);
+            m_Infos.Remove(info);
 
         }
 

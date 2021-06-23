@@ -1,4 +1,3 @@
-using ExpressoBits.Console.UI;
 using ExpressoBits.Console.Utils;
 using UnityEngine;
 
@@ -7,11 +6,16 @@ namespace ExpressoBits.Console
     [AddComponentMenu(menuName: "Console/Consoler")]
     public class Consoler : Singleton<Consoler>
     {
+        public static IVisualConsoler Visual => Instance.visual;
+
+        public void SetVisual(IVisualConsoler newVisual)
+        {
+            visual = newVisual;
+        }
+        private IVisualConsoler visual;
         private Commander m_Commander;
         private Logs m_Logs;
         
-        [HideInInspector]
-        public VisualConsoler visualConsoler;
 
         public Commander Commander
         {
@@ -36,15 +40,7 @@ namespace ExpressoBits.Console
         {
             m_Commander = GetComponent<Commander>();
             m_Logs = GetComponent<Logs>();
-            
         }
 
-        private void Start()
-        {
-            if (!visualConsoler)
-            {
-                Debug.LogError("An object with a visual consoler is missing in the scene!");
-            }
-        }
     }
 }

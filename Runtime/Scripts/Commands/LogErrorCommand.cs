@@ -10,14 +10,13 @@ namespace ExpressoBits.Console.Commands
         {
             commandWord = "error";
         }
-
+        
         public override bool Process(string[] args)
         {
             string logText = string.Join(" ", args);
 
             if (logText.Length <= 0) return false;
 
-            Debug.LogError(logText);
             if (Consoler.Instance.Logs != null) Consoler.Instance.Logs.LogError(logText);
 
             return true;

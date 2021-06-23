@@ -72,6 +72,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &627649272241792315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoMessagePrefab: {fileID: 573168610, guid: 6572eec04479f7d49968db9fe3f91873, type: 3}
+  theme: {fileID: 11400000, guid: 5804f23bc608d354a876127188f00fb1, type: 2}
 --- !u!114 &815598469168566691
 MonoBehaviour:
   m_ObjectHideFlags: 0
