@@ -11,11 +11,15 @@ namespace ExpressoBits.Console.Stats
         [HideInInspector]
         public StatCommand statCommand;
 
+        public List<Info> Infos => m_Infos;
+
         private readonly List<Info> m_Infos = new List<Info>();
 
         public Action<Info> onAddStat;
         public Action<Info> onRemoveStat;
-        public Action<Info> onUpdateInfo;
+        public Action<Info> onUpdateStat;
+        public Action<Info> onEnableStat;
+        public Action<Info> onDisableStat;
         
         private void Awake()
         {
@@ -24,18 +28,29 @@ namespace ExpressoBits.Console.Stats
         }
 
 
-        public void AddStat(Info info)
+        public void AddStat(Info info,bool isStartInShow)
         {
             if (m_Infos.Contains(info))
             {
-                onUpdateInfo?.Invoke(info);
+                onUpdateStat?.Invoke(info);
             }
             else
             {
                 m_Infos.Add(info);
                 onAddStat?.Invoke(info);
+                if(!isStartInShow)  onDisableStat?.Invoke(info);
             }
 
+        }
+
+        public void EnableInfo(Info info)
+        {
+            onEnableStat?.Invoke(info);
+        }
+
+        public void DisableInfo(Info info)
+        {
+            onDisableStat?.Invoke(info);
         }
 
         public void RemoveStat(Info info)

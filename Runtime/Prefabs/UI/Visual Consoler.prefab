@@ -32,11 +32,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 240}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5733320897142277880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58,9 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   align: 0
-  consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185,
-    type: 3}
+  theme: {fileID: 11400000, guid: 5804f23bc608d354a876127188f00fb1, type: 2}
+  consoleInputPrefab: {fileID: 2952335626528802533, guid: 810f0c5d11fe1ae49aad89331fb24185, type: 3}
   messagePanel: {fileID: 561523933, guid: b84e7f23f1349b64aadf40faa01bd2dd, type: 3}
   uiLogPrefab: {fileID: 573168610, guid: b76fd55d7c9051d4698ed7b21ee73940, type: 3}
-  theme: {fileID: 11400000, guid: 5804f23bc608d354a876127188f00fb1, type: 2}
   consoleInput: {fileID: 0}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +37,7 @@ namespace ExpressoBits.Console.UI
             background.color = info.logAttribute.backgroundColor;
             UpdateContent();
         }
-
+        
         public void UpdateContent()
         {
             text.text = info.content;

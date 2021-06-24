@@ -16,39 +16,31 @@ namespace ExpressoBits.Console.Stats
 
         protected List<Info> infos = new List<Info>();
 
-        static public string ColorText(string text, Color color) {
+        protected static string ColorText(string text, Color color) {
             return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
         }
 
         private void Start()
         {
-            
-            isShow = startShow;
-
-            if(isShow)
+            foreach(var info in infos)
             {
-                foreach(Info info in infos)
-                {
-                    Stater.AddStat(info);
-                }
+                Stater.AddStat(info,startShow);
             }
-        
             Stater.statCommand.Add(argumentName,this);
         }
 
         public void Toggle()
         {
             isShow = !isShow;
-            if(isShow){
-                foreach(Info info in infos)
+            foreach(var info in infos)
+            {
+                if (isShow)
                 {
-                    Stater.AddStat(info);
+                    Stater.EnableInfo(info);
                 }
-            }
-            else{
-                foreach(Info info in infos)
+                else
                 {
-                    Stater.RemoveStat(info);
+                    Stater.DisableInfo(info);
                 }
             }
             

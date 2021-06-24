@@ -27,8 +27,8 @@ namespace ExpressoBits.Console
         private void Start()
         {
             if (!m_Logs) return;
-            //NOTE get package version?
-            Consoler.Logs.Log("Expresso Bits Console <color=red>v0.9.1</color>",3f);
+            //TODO get package version?
+            Consoler.Logs.Log("Expresso Bits Console <color=yellow>v1.1.0</color>",3f);
             Consoler.Logs.LogHelp(helpTextToOpen);
 
             m_Open =

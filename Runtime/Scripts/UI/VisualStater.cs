@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using ExpressoBits.Console.Stats;
+using UnityEngine.UI;
 
 namespace ExpressoBits.Console.UI
 {
@@ -13,18 +15,37 @@ namespace ExpressoBits.Console.UI
         private readonly Dictionary<Info,InfoMessage> m_Stats = new Dictionary<Info,InfoMessage>();
         private Stater m_Stater;
 
-        private void Start()
+        private void Awake()
         {
             m_Stater = FindObjectOfType<Stater>();
             m_Stater.onAddStat += AddInfo;
-            m_Stater.onUpdateInfo += UpdateInfo;
+            m_Stater.onUpdateStat += UpdateInfo;
             m_Stater.onRemoveStat += RemoveInfo;
-
+            m_Stater.onEnableStat += EnableInfo;
+            m_Stater.onDisableStat += DisableInfo;
+            foreach (var info in m_Stater.Infos)
+            {
+                AddInfo(info);
+                DisableInfo(info);
+            }
         }
 
         private void UpdateInfo(Info info)
         {
             //m_Stats[info].UpdateContent(info.content);
+        }
+
+        private void EnableInfo(Info info)
+        {
+            if (!m_Stats.TryGetValue(info, out var infoMessage)) return;
+            infoMessage.gameObject.SetActive(true);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        }
+        
+        private void DisableInfo(Info info)
+        {
+            if (!m_Stats.TryGetValue(info, out var infoMessage)) return;
+            infoMessage.gameObject.SetActive(false);
         }
 
         // Add new visual stat
@@ -33,16 +54,13 @@ namespace ExpressoBits.Console.UI
             var logMessage = Instantiate(infoMessagePrefab,transform);
             logMessage.Setup(info,theme.font);
             m_Stats.Add(info,logMessage);
-            logMessage.transform.SetSiblingIndex(0);
         }
 
         private void RemoveInfo(Info info)
         {
-            if (m_Stats.TryGetValue(info, out var infoMessage))
-            {
-                Destroy(infoMessage.gameObject);
-                m_Stats.Remove(info);
-            }
+            if (!m_Stats.TryGetValue(info, out var infoMessage)) return;
+            Destroy(infoMessage.gameObject);
+            m_Stats.Remove(info);
 
         }
     }
