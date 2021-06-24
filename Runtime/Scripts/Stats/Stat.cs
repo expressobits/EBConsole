@@ -6,7 +6,6 @@ namespace ExpressoBits.Console.Stats
 {
     public class StatBehaviour : MonoBehaviour
     {
-        public bool startShow = false;
         public Color color;
         protected bool isShow;
 
@@ -24,7 +23,7 @@ namespace ExpressoBits.Console.Stats
         {
             foreach(var info in infos)
             {
-                Stater.AddStat(info,startShow);
+                Stater.AddStat(info);
             }
             Stater.statCommand.Add(argumentName,this);
         }

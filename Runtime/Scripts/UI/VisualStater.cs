@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 using ExpressoBits.Console.Stats;
@@ -16,6 +15,11 @@ namespace ExpressoBits.Console.UI
         private Stater m_Stater;
 
         private void Awake()
+        {
+            
+        }
+
+        private void Start()
         {
             m_Stater = FindObjectOfType<Stater>();
             m_Stater.onAddStat += AddInfo;

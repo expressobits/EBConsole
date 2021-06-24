@@ -1,17 +1,14 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using ExpressoBits.Console.Commands;
 
 namespace ExpressoBits.Console.Stats
 {
     public class Stater : MonoBehaviour
     {
-
-        [HideInInspector]
         public StatCommand statCommand;
 
-        public List<Info> Infos => m_Infos;
+        public IEnumerable<Info> Infos => m_Infos;
 
         private readonly List<Info> m_Infos = new List<Info>();
 
@@ -28,7 +25,7 @@ namespace ExpressoBits.Console.Stats
         }
 
 
-        public void AddStat(Info info,bool isStartInShow)
+        public void AddStat(Info info)
         {
             if (m_Infos.Contains(info))
             {
@@ -38,7 +35,7 @@ namespace ExpressoBits.Console.Stats
             {
                 m_Infos.Add(info);
                 onAddStat?.Invoke(info);
-                if(!isStartInShow)  onDisableStat?.Invoke(info);
+                onDisableStat?.Invoke(info);
             }
 
         }
