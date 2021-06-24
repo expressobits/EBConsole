@@ -64,7 +64,7 @@ namespace ExpressoBits.Console.UI
             {
                 SetupLogPanel();
 
-                Consoler.Logs.onLog += Log;
+                Consoler.Logs.onLog += AddInfo;
                 Consoler.Logs.onDequeue += Dequeue;
 
                 if (Consoler.Commander)
@@ -90,7 +90,7 @@ namespace ExpressoBits.Console.UI
 
         }
 
-        private void Log(Info info)
+        private void AddInfo(Info info)
         {
             InfoMessage message = InstantiateLogsAndReturnToastLog(info);
             infoMessages.Add(info,message);
@@ -104,6 +104,7 @@ namespace ExpressoBits.Console.UI
             {
                 Destroy(infoMessage.gameObject);
             }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_LogPanel.logScrollContent.GetComponent<RectTransform>());
         }
 
 
@@ -154,12 +155,14 @@ namespace ExpressoBits.Console.UI
         {
 
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
+            toastLog.GetComponent<RectTransform>().ForceUpdateRectTransforms();
             if(align == ConsoleAlign.Top)toastLog.transform.SetSiblingIndex(0);
             
             toastLog.Setup(info,8f,theme.font);
             
             if (!Consoler.Commander) return toastLog;
             var staticLog = Instantiate(uiLogPrefab, m_LogPanel.logScrollContent.transform);
+            staticLog.GetComponent<RectTransform>().ForceUpdateRectTransforms();
             if(align == ConsoleAlign.Top)staticLog.transform.SetSiblingIndex(0);
             staticLog.Setup(info,theme.font);
             return staticLog;
