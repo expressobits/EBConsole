@@ -16,7 +16,10 @@ namespace ExpressoBits.Console
         public int maxLogCount = 128;
         
         [SerializeField] private bool isLogUnityMessages;
+        [SerializeField] private bool isLogWarnUnityMessages;
+        [SerializeField] private bool isLogErrorUnityMessages;
         [SerializeField] private bool isLogUnityStackTraces;
+        [SerializeField] private bool isLogAssertUnityMessages;
 
         public Action<Info> onLog;
         public Action<Info> onDequeue;
@@ -25,12 +28,12 @@ namespace ExpressoBits.Console
 
         private void Start()
         {
-            if(isLogUnityMessages) Application.logMessageReceived += ApplicationOnlogMessageReceived;
+            Application.logMessageReceived += ApplicationOnlogMessageReceived;
         }
 
         private void OnDestroy()
         {
-            if(isLogUnityMessages) Application.logMessageReceived -= ApplicationOnlogMessageReceived;
+            Application.logMessageReceived -= ApplicationOnlogMessageReceived;
         }
 
         private void ApplicationOnlogMessageReceived(string message, string stacktrace, LogType type)
@@ -38,18 +41,21 @@ namespace ExpressoBits.Console
             switch (type)
             {
                 case LogType.Assert:
-                    LogHelp(message);
+                    if(isLogAssertUnityMessages) LogHelp(message);
                     break;
                 case LogType.Exception:
                 case LogType.Error:
-                    LogError(message);
+                    if(isLogErrorUnityMessages) LogError(message);
                     if(isLogUnityStackTraces && stacktrace.Length > 0) LogError(stacktrace);
                     break;
                 case LogType.Warning:
-                    LogWarn(message);
+                    if(isLogWarnUnityMessages) LogWarn(message);
+                    break;
+                case LogType.Log:
+                    if(isLogUnityMessages) Log(message);
                     break;
                 default:
-                    Log(message);
+                    if(isLogUnityMessages) Log(message);
                     break;
             }
         }
