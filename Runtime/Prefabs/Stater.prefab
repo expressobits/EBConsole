@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 712278140}
   - component: {fileID: 1843958722}
   - component: {fileID: 1843958723}
+  - component: {fileID: 3148409725619797758}
   m_Layer: 0
   m_Name: FPS Stat
   m_TagString: Untagged
@@ -45,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6f6b5f89b83e344a0cb4140d9d5821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 1
   color: {r: 0, g: 1, b: 0.11850667, a: 1}
   argumentName: fps
   updateInterval: 0.5
@@ -63,7 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66e2c1999fbc2f4f83e1b9f177e706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 0
   color: {r: 0, g: 1, b: 0.11023998, a: 1}
   argumentName: memory
   ramIcon: {fileID: 21300000, guid: 901b98b5635b1c2408f6f4d99c6925a5, type: 3}
@@ -80,10 +79,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c927e6b8bca654fb08ca8b4830dc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShow: 0
   color: {r: 1, g: 0.99247026, b: 0, a: 1}
   argumentName: system
   graphicIcon: {fileID: 21300000, guid: e11196cdc6673e249832efdfad4dd447, type: 3}
+--- !u!114 &3148409725619797758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712278139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073daed9388f456d84488106e4dc4e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputsStats:
+  - key: 286
+    stat: {fileID: 712278140}
+  - key: 287
+    stat: {fileID: 1843958722}
+  - key: 288
+    stat: {fileID: 1843958723}
 --- !u!1 &6693355490592070695
 GameObject:
   m_ObjectHideFlags: 0

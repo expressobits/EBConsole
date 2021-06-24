@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ExpressoBits.Console.Stats
 {
-    public class StatBehaviour : MonoBehaviour
+    public abstract class StatBehaviour : MonoBehaviour
     {
         public Color color;
         protected bool isShow;
