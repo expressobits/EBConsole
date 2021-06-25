@@ -26,20 +26,21 @@ namespace ExpressoBits.Console
         public UnityEvent onProcessCommand;
         public UnityEvent onFinishProcessCommand;
 
-        public Action onChangeInputCommander;
+        public Action<string> onChangeInputCommander;
 
+        public bool IsOpen => m_IsOpen;
         public string Input
         {
             get => m_Input;
             set
             {
                 m_Input = value;
-                onChangeInputCommander?.Invoke();
+                onChangeInputCommander?.Invoke(m_Input);
             }
         }
         
         #region private values
-        private bool m_ActiveInput;
+        private bool m_IsOpen;
         private string m_Input = string.Empty;
         private DeveloperConsole m_DeveloperConsole;
         private DeveloperConsole DeveloperConsole
@@ -66,21 +67,23 @@ namespace ExpressoBits.Console
         // Close commander
         public void CloseCommander()
         {
-            m_ActiveInput = false;
+            if (!m_IsOpen) return;
+            m_IsOpen = false;
             onCloseCommander.Invoke();
         }
 
         // Open commander
         public void OpenCommander()
         {
-            m_ActiveInput = true;
+            if (m_IsOpen) return;
+            m_IsOpen = true;
             onOpenCommander.Invoke();
         }
 
         // Enable/disable commander
         public void Toggle()
         {
-            if (m_ActiveInput)
+            if (m_IsOpen)
             {
                 CloseCommander();
             }
@@ -94,13 +97,13 @@ namespace ExpressoBits.Console
 
         #region Command actions
         // Process command per string input
-        public void ProcessCommand(string inputValue)
+        public void ProcessCommand()
         {
 
-            DeveloperConsole.ProcessCommand(inputValue);
+            DeveloperConsole.ProcessCommand(Input);
             onProcessCommand.Invoke();
             onFinishProcessCommand.Invoke();
-
+            Input = string.Empty;
         }
 
         // Add command create in runtime, create new command with

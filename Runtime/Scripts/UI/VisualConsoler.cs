@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ExpressoBits.Console.UI
 {
-    [AddComponentMenu(menuName:"UI/Visual Consoler")]
+    [AddComponentMenu("UI/Visual Consoler")]
     public class VisualConsoler : MonoBehaviour
     {
         public ConsoleAlign align;
@@ -22,20 +22,20 @@ namespace ExpressoBits.Console.UI
         
         private LogPanel m_LogPanel;
 
-        public Dictionary<Info, InfoMessage> infoMessages = new Dictionary<Info, InfoMessage>();
+        private readonly Dictionary<Info, InfoMessage> m_InfoMessages = new Dictionary<Info, InfoMessage>();
 
         private void Awake()
         {
             if (Consoler.Commander)
             {
                 SetupConsoleInput();
-
                 consoleInput.onValueChanged.AddListener(delegate
                 {
                     if (!consoleInput.text.Contains("\n")) return;
                     var text = (consoleInput.text).Remove(consoleInput.text.LastIndexOf("\n", StringComparison.Ordinal));
                     consoleInput.text = text;
-                    Consoler.Commander.ProcessCommand(text);
+                    Consoler.Commander.Input = text;
+                    Consoler.Commander.ProcessCommand();
                 });
 
                 consoleInput.GetComponentInChildren<Text>().font = theme.font;
@@ -52,54 +52,52 @@ namespace ExpressoBits.Console.UI
                     consoleInput.gameObject.SetActive(true);
                     consoleInput.ActivateInputField();
                 });
-            
-                Consoler.Commander.onFinishProcessCommand.AddListener(delegate
-                {
-                    consoleInput.text = string.Empty;
-                });
             }
             
-            // Check if logs exists
+            InitLogs();
+            Consoler.Commander.onChangeInputCommander += SetInputText;
+        }
+
+        private void InitLogs()
+        {
             if (Consoler.Logs)
             {
                 SetupLogPanel();
-
                 Consoler.Logs.onLog += AddInfo;
                 Consoler.Logs.onDequeue += Dequeue;
-
                 if (Consoler.Commander)
                 {
                     Consoler.Commander.onCloseCommander.AddListener(delegate
                     {
-                        m_LogPanel.logPanelScroll.SetActive(false);
-                        m_LogPanel.logPanelToast.SetActive(true);
+                        SetOpenLogScroll(false);
                     });
                 
                     Consoler.Commander.onOpenCommander.AddListener(delegate
                     {
-                        m_LogPanel.logPanelScroll.SetActive(true);
-                        m_LogPanel.logPanelToast.SetActive(false);
+                        SetOpenLogScroll(true);
                     });
                 }
-                else
-                {
-                    m_LogPanel.logPanelScroll.SetActive(false);
-                    m_LogPanel.logPanelToast.SetActive(true);
-                }
             }
+            SetOpenLogScroll(false);
 
+        }
+        
+        private void SetOpenLogScroll(bool active)
+        {
+            m_LogPanel.logPanelScroll.SetActive(active);
+            m_LogPanel.logPanelToast.SetActive(!active);
         }
 
         private void AddInfo(Info info)
         {
             InfoMessage message = InstantiateLogsAndReturnToastLog(info);
-            infoMessages.Add(info,message);
+            m_InfoMessages.Add(info,message);
         }
 
         private void Dequeue(Info info)
         {
-            var infoMessage = infoMessages[info];
-            infoMessages.Remove(info);
+            var infoMessage = m_InfoMessages[info];
+            m_InfoMessages.Remove(info);
             if (infoMessage != null)
             {
                 Destroy(infoMessage.gameObject);
@@ -151,7 +149,7 @@ namespace ExpressoBits.Console.UI
             return consoleInput.gameObject.activeSelf;
         }
 
-        public InfoMessage InstantiateLogsAndReturnToastLog(Info info)
+        private InfoMessage InstantiateLogsAndReturnToastLog(Info info)
         {
 
             var toastLog = Instantiate(uiLogPrefab, m_LogPanel.logPanelToast.transform);
@@ -173,13 +171,13 @@ namespace ExpressoBits.Console.UI
             return consoleInput.text;
         }
 
-        public void SetInputText(string text)
+        private void SetInputText(string text)
         {
             consoleInput.text = text;
             SetCaretInputPosition(consoleInput.text.Length);
         }
 
-        public void SetCaretInputPosition(int position)
+        private void SetCaretInputPosition(int position)
         {
             consoleInput.caretPosition = position;
         }
