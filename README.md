@@ -16,9 +16,11 @@
 
 ✔️ Commands pre-established or added at run time.
 
-🔨 Easy change of themes and visual by having separate interface and logic codes.
+✔️ Display Debug.Log messages in the console.
 
 ✔️ Adding status messages (Example: FPS)
+
+🔨 Easy change of themes and visual by having separate interface and logic codes.
 
 
 ## Install
