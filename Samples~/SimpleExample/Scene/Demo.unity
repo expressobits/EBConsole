@@ -1257,6 +1257,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
+      propertyPath: maxLogCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474387821887415923, guid: 609df2bc460383745b9bf5261ff3d045, type: 3}
       propertyPath: visualConsoler
       value: 
       objectReference: {fileID: 1999926897}
@@ -1294,6 +1298,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 712278140, guid: 7ec534941a861da419a3b5da58e6add7, type: 3}
+      propertyPath: startShow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843958722, guid: 7ec534941a861da419a3b5da58e6add7, type: 3}
+      propertyPath: startShow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1843958723, guid: 7ec534941a861da419a3b5da58e6add7, type: 3}
       propertyPath: vRamIcon
       value: 
