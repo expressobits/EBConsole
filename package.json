@@ -1,7 +1,7 @@
 {
     "name": "br.com.expressobits.console",
     "displayName": "EB Console",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "unity": "2020.3",
     "description": "Free and customizable console in game for Unity",
     "keywords": [
@@ -20,5 +20,18 @@
 
         }
 
-    ]
+    ],
+    "author": {
+        "name": "ExpressoBits",
+        "email": "scriptsengineer@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/ExpressoBits/EBConsole",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ExpressoBits/EBConsole.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ExpressoBits/EBConsole/issues"
+    }
 }
