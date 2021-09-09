@@ -20,5 +20,17 @@
 
         }
 
-    ]
+    ],
+    "author": {
+        "name": "Expresso Bits"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/ExpressoBits/EBConsole",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ExpressoBits/EBConsole.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ExpressoBits/EBConsole/issues"
+    }
 }
