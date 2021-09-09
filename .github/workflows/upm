@@ -1,0 +1,25 @@
+name: Publish UPM
+  # You may pin to the exact commit or the version.
+  # uses: monry/actions-upm-publish@8b570afdbdad03609079f5c56e1d02641c164954
+  uses: monry/actions-upm-publish@v1.1.6
+  with:
+    # Summary of Release
+    release_summary: # default is ${{ github.event.release.name }}
+    # Body of Release
+    release_body: # default is ${{ github.event.release.body }}
+    # Version of Release
+    release_version: # default is ${{ github.event.release.tag_name }}
+    # Branch name of Release
+    release_branch: # default is ${{ github.event.release.target_commitish }}
+    # GitHub actor name
+    github_actor: # default is ${{ github.actor }}
+    # GitHub Repository name
+    github_repository: # default is ${{ github.repository }}
+    # GitHub auth token
+    github_token: 
+    # Directory path of package.json
+    package_directory_path: # default is Assets
+    # URL of UPM Registry
+    npm_registry_url: 
+    # Auth token for UPM Registry
+    npm_auth_token: 
