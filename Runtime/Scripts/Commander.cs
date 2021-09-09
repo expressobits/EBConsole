@@ -110,13 +110,42 @@ namespace ExpressoBits.Console
         // <code>new Command("test",delegate{ Test(); })</code>
         public void AddCommand(ICommand command)
         {
+            if(commands.Contains(command))
+            {
+                Debug.Log("Cannot add command " + command.CommandWord + " twice");
+                return;
+            }
             commands.Add(command);
         }
 
         // Add command create in runtime with action
-        public void AddCommand(string commandWord, MethodDelegate method)
+        public void AddCommand(string commandWord, MethodDelegate method,int tag = 0)
         {
-            commands.Add(new Command(commandWord,method));
+            AddCommand(new Command(commandWord,method,tag));
+        }
+
+        public void RemoveCommand(ICommand command)
+        {
+            if(!commands.Contains(command))
+            {
+                Debug.Log("Command " + command.CommandWord + " not exists!");
+                return;
+            }
+            commands.Remove(command);
+        }
+
+        public void RemoveCommandWithTag(int tag)
+        {
+            var toRemove = new List<ICommand>();
+            foreach(ICommand command in commands)
+            {
+                if(command.Tag == tag)
+                {
+                    toRemove.Add(command);
+                }
+            }
+            foreach (var command in toRemove)
+                RemoveCommand(command);
         }
         #endregion
 
