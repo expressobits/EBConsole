@@ -8,7 +8,14 @@ namespace ExpressoBits.Console.Stats{
     {
         public string CommandWord => "stat";
 
+        public string Description => "stat command";
+
+        public MethodDelegate Method => Process;
+
+        public int Tag => 0;
+
         private readonly Dictionary<string,StatBehaviour> m_InfoArgDictionary = new Dictionary<string, StatBehaviour>();
+
         public bool Process(string[] args)
         {
             switch (args.Length)
@@ -48,7 +55,10 @@ namespace ExpressoBits.Console.Stats{
             m_InfoArgDictionary.Add(command,statBehaviour);
         }
 
-        
+        bool ICommand.Process(string[] args)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

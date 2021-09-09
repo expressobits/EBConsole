@@ -14,6 +14,7 @@ namespace ExpressoBits.Console
         {
             get
             {
+                if (!Instance) return null;
                 if (!Instance.m_Commander) Instance.m_Commander = Instance.GetComponent<Commander>();
                 return Instance.m_Commander;
             }
@@ -23,6 +24,7 @@ namespace ExpressoBits.Console
         {
             get
             {
+                if (!Instance) return null;
                 if (!Instance.m_Logs) Instance.m_Logs = Instance.GetComponent<Logs>();
                 return Instance.m_Logs;
             }

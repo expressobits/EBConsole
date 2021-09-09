@@ -114,9 +114,9 @@ namespace ExpressoBits.Console
         }
 
         // Add command create in runtime with action
-        public void AddCommand(string commandWord, UnityAction action)
+        public void AddCommand(string commandWord, MethodDelegate method)
         {
-            commands.Add(new Command(commandWord,action));
+            commands.Add(new Command(commandWord,method));
         }
         #endregion
 

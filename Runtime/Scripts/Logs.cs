@@ -10,22 +10,21 @@ namespace ExpressoBits.Console
     {
 
         public Queue<Info> infos = new Queue<Info>();
-        public float defaultTimer = 8f;
-        
+        [SerializeField] private float defaultTimer = 8f;
         [Range(0,2048)]
-        public int maxLogCount = 128;
-        
+        [SerializeField] private int maxLogCount = 128;
         [SerializeField] private bool isLogUnityMessages;
         [SerializeField] private bool isLogWarnUnityMessages;
         [SerializeField] private bool isLogErrorUnityMessages;
         [SerializeField] private bool isLogUnityStackTraces;
         [SerializeField] private bool isLogAssertUnityMessages;
 
-        public Action<Info> onLog;
-        public Action<Info> onDequeue;
+        #region Actions
+        public Action<Info> OnLog;
+        public Action<Info> OnDequeue;
         public Action OnClearLog;
+        #endregion
         
-
         private void Start()
         {
             Application.logMessageReceived += ApplicationOnlogMessageReceived;
@@ -64,10 +63,10 @@ namespace ExpressoBits.Console
         {
             if (!Consoler.Commander) return;
             infos.Enqueue(info);
-            onLog?.Invoke(info);
+            OnLog?.Invoke(info);
             if (infos.Count <= maxLogCount) return;
             var e = infos.Dequeue();
-            onDequeue?.Invoke(e);
+            OnDequeue?.Invoke(e);
         }
         
         public void Log(string logText,LogAttribute logAttribute, float timer)
@@ -156,7 +155,7 @@ namespace ExpressoBits.Console
             for (var i = infos.Count - 1; i >= 0; i--)
             {
                 var e = infos.Dequeue();
-                onDequeue?.Invoke(e);
+                OnDequeue?.Invoke(e);
             }
             OnClearLog?.Invoke();
         }

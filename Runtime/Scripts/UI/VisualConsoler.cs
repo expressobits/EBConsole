@@ -63,8 +63,8 @@ namespace ExpressoBits.Console.UI
             if (Consoler.Logs)
             {
                 SetupLogPanel();
-                Consoler.Logs.onLog += AddInfo;
-                Consoler.Logs.onDequeue += Dequeue;
+                Consoler.Logs.OnLog += AddInfo;
+                Consoler.Logs.OnDequeue += Dequeue;
                 if (Consoler.Commander)
                 {
                     Consoler.Commander.onCloseCommander.AddListener(delegate
