@@ -23,6 +23,7 @@ jobs:
    - run: yarn install
    
    # Publish to npm
+   - run: npm init --scope=br.com.expressobits
    - run: npm publish --access public
      env:
        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
