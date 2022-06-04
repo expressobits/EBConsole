@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,6 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716667987}
+  - component: {fileID: 716667986}
   m_Layer: 0
   m_Name: Testing Add Command
   m_TagString: Untagged
@@ -267,6 +268,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &716667986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716667985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317be16df3952564788895c05e5c6df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteTest: {fileID: 21300000, guid: bd6945711b4cd6743ae66059e9cb6121, type: 3}
 --- !u!4 &716667987
 Transform:
   m_ObjectHideFlags: 0
@@ -753,6 +767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492891788}
+  - component: {fileID: 1492891787}
   m_Layer: 0
   m_Name: Testing Log in runtime
   m_TagString: Untagged
@@ -760,6 +775,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1492891787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f237880396d4470b5ed6b48fd3e55a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteTest: {fileID: 21300000, guid: 901b98b5635b1c2408f6f4d99c6925a5, type: 3}
 --- !u!4 &1492891788
 Transform:
   m_ObjectHideFlags: 0

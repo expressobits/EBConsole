@@ -1,23 +1,47 @@
-﻿using ExpressoBits.Console;
-using UnityEngine;
+﻿using UnityEngine;
+using ExpressoBits.Console.Commands;
 
 namespace ExpressoBits.Console
 {
     public class AddNewCommandTest : MonoBehaviour
     {
         public Sprite spriteTest;
-    
+
         // Start is called before the first frame update
         private void Start()
         {
-            if(Consoler.Instance.Commander != null)
-                Consoler.Instance.Commander.AddCommand("test", delegate { Command("Testing add command in runtime! "); });
+            if (Consoler.Commander != null)
+            {
+                Consoler.Commander.AddCommand(new TestCommand(spriteTest));
+            }    
+        }
+    }
+
+    public struct TestCommand : ICommand
+    {
+        public string CommandWord => "test";
+
+        public string Description => "Testing add command in runtime";
+
+        public MethodDelegate Method => Process;
+
+        public int Tag => 0;
+
+        private Sprite spriteTest;
+
+        public TestCommand(Sprite sprite)
+        {
+            this.spriteTest = sprite;
         }
 
-        public void Command(string test)
+        public bool Process(string[] args)
         {
-            if(Consoler.Instance.Commander != null)
-                Consoler.Instance.Logs.Log(test,10f,spriteTest,Color.cyan);
+            if (Consoler.Commander != null)
+            {
+                Consoler.Logs.Log("Testing add command in runtime", spriteTest, Color.cyan);
+                return true;
+            }  
+            return false;
         }
     }
 }

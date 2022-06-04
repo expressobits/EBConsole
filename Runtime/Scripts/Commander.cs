@@ -119,7 +119,7 @@ namespace ExpressoBits.Console
         }
 
         // Add command create in runtime with action
-        public void AddCommand(string commandWord, MethodDelegate method,int tag = 0)
+        public void AddCommand(string commandWord, MethodDelegate method, int tag = 0)
         {
             AddCommand(new Command(commandWord,method,tag));
         }
